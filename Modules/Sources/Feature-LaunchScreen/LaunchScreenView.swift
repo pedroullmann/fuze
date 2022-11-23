@@ -10,7 +10,19 @@ public struct LaunchScreenView: View {
     }
 
     public var body: some View {
-        Asset.Media.logo.swiftUIImage
-            .background(.backgroundPrimary)
+        VStack(spacing: .zero) {
+            Text("None")
+                .font(.system(size: 64))
+                .foregroundColor(.textPrimary)
+            Text("Regular")
+                .font(.montserrat(.regular, fixedSize: 64))
+                .foregroundColor(.textPrimary)
+            Text("Bold")
+                .font(.montserrat(.bold, fixedSize: 64))
+                .foregroundColor(.textPrimary)
+            Image(Asset.Media.logo)
+
+        }
+        .background(.backgroundPrimary)
     }
 }
