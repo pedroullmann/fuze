@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */ = {isa = PBXBuildFile; productRef = E720AB5E292DB88500D578AE /* Core-Resources */; };
 		E751224A292DA99E00515525 /* FuzeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7512249292DA99E00515525 /* FuzeApp.swift */; };
 		E751224E292DA99F00515525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E751224D292DA99F00515525 /* Assets.xcassets */; };
 		E7512251292DA99F00515525 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7512250292DA99F00515525 /* Preview Assets.xcassets */; };
@@ -26,6 +27,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */,
+				E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +94,7 @@
 			name = Fuze;
 			packageProductDependencies = (
 				E7512258292DB06600515525 /* Core-DesignSystem */,
+				E720AB5E292DB88500D578AE /* Core-Resources */,
 			);
 			productName = Fuze;
 			productReference = E7512246292DA99E00515525 /* Fuze.app */;
@@ -358,6 +361,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E720AB5E292DB88500D578AE /* Core-Resources */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Core-Resources";
+		};
 		E7512258292DB06600515525 /* Core-DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Core-DesignSystem";

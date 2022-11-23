@@ -1,0 +1,11 @@
+input_dir: ../Modules/Sources/Core-Resources/Resources/Localizable/en.lproj
+output_dir: ../Modules/Sources/Core-Resources/Resources/Generated
+
+strings:
+  inputs: Localizable.strings
+  outputs:
+    templateName: structured-swift5
+    output: Strings+Generated.swift
+    params:
+      publicAccess: true
+      enumName: Strings

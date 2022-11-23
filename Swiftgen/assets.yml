@@ -1,0 +1,10 @@
+input_dir: ../Modules/Sources/Core-Resources/Resources
+output_dir: ../Modules/Sources/Core-Resources/Resources/Generated
+
+xcassets:
+  inputs: Media.xcassets
+  outputs:
+    templateName: swift5
+    output: Assets+Generated.swift
+    params:
+      publicAccess: true
