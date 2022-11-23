@@ -1,4 +1,5 @@
 import Core_DesignSystem
+import Core_UI
 import Core_Resources
 import SwiftUI
 
@@ -12,14 +13,17 @@ public struct LaunchScreenView: View {
     public var body: some View {
         VStack(spacing: .zero) {
             Text("None")
-                .font(.system(size: 64))
                 .foregroundColor(.textPrimary)
-            Text("Regular")
-                .font(.montserrat(.regular, fixedSize: 64))
-                .foregroundColor(.textPrimary)
-            Text("Bold")
-                .font(.montserrat(.bold, fixedSize: 64))
-                .foregroundColor(.textPrimary)
+
+            Text("Heading")
+                .textToken(.init(typography: .heading1, color: .textPrimary))
+
+            Text("Paragraph")
+                .textToken(.init(typography: .paragraph1, color: .textPrimary))
+
+            Text("ParagraphBold")
+                .textToken(.init(typography: .paragraph1Bold, color: .textPrimary))
+
             Image(Asset.Media.logo)
 
         }
