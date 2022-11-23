@@ -26,7 +26,10 @@ let package = Package(
         ),
         .target(
             name: "Feature-LaunchScreen",
-            dependencies: []
+            dependencies: [
+                "Core-DesignSystem",
+                "Core-Resources"
+            ]
         )
     ]
 )

@@ -1,5 +1,5 @@
 input_dir: ../Modules/Sources/Core-Resources/Resources
-output_dir: ../Modules/Sources/Core-Resources/Resources/Generated
+output_dir: ../Modules/Sources/Core-Resources/Generated
 
 xcassets:
   inputs: Media.xcassets
@@ -7,4 +7,8 @@ xcassets:
     templateName: swift5
     output: Assets+Generated.swift
     params:
+      forceProvidesNamespaces: true
+      forceFileNameEnum: true
       publicAccess: true
+      bundle: Resources.bundle
+       
