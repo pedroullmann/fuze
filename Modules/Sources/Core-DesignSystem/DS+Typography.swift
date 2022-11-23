@@ -32,6 +32,14 @@ public extension DS.Typography {
             family: "Montserrat",
             style: "Regular"
         ),
+        size: 24
+    )
+
+    static let heading3: Self = .init(
+        font: .init(
+            family: "Montserrat",
+            style: "Regular"
+        ),
         size: 18
     )
 

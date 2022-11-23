@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "Modules",
     defaultLocalization: "en",
-    platforms: [.iOS(.v14)],
+    platforms: [.iOS(.v15)],
     products: [
         // MARK: - Core
         .library(name: "Core-DesignSystem", targets: ["Core-DesignSystem"]),
@@ -30,7 +30,8 @@ let package = Package(
             name: "Core-UI",
             dependencies: [
                 "Core-DesignSystem",
-                "Core-Resources"
+                "Core-Resources",
+                "Root-Elements"
             ]
         ),
         .target(

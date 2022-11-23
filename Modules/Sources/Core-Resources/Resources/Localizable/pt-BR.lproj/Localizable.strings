@@ -2,4 +2,10 @@
   PT-BR
 */
 
+// MARK: - Home
 "match_list_title" = "Partidas";
+
+// MARK: - Error
+"error_title" = "Algo deu errado";
+"error_subtitle" = "Aguarde alguns instantes\ne tente novamente";
+"error_action" = "Tentar novamente";

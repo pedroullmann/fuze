@@ -1,6 +1,7 @@
 import Core_DesignSystem
 import Core_UI
 import Core_Resources
+import Root_Elements
 import SwiftUI
 
 public struct LaunchScreenView: View {
