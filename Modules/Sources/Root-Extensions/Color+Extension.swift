@@ -3,6 +3,7 @@ import UIKit
 // MARK: - Reference
 /// https://www.hackingwithswift.com/example-code/uicolor/how-to-convert-a-hex-color-to-a-uicolor
 
+// MARK: - UIColor Extension
 public extension UIColor {
     convenience init?(hex: String) {
         let red, green, blue, alpha: CGFloat
