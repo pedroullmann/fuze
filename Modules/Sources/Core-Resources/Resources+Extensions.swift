@@ -62,6 +62,25 @@ public extension Resources {
 }
 
 #if DEBUG
+public final class ResourcesSpy: Registarable {
+    public var registerFontsWasCalled: Bool
+    public var registerFontWasCalled: Bool
+    public init(
+        registerFontsWasCalled: Bool = false,
+        registerFontWasCalled: Bool = false
+    ) {
+        self.registerFontsWasCalled = registerFontsWasCalled
+        self.registerFontWasCalled = registerFontWasCalled
+    }
+
+    public func registerFont(fontName: String, fontExtension: String, failureHandler: @escaping (String) -> Void) {
+        registerFontWasCalled = true
+    }
+    public func registerFonts(fonts: [Font.MontserratStyle], failureHandler: @escaping (String) -> Void) {
+        registerFontsWasCalled = true
+    }
+}
+
 public struct ResourcesDummy: Registarable {
     public init() {}
     public func registerFont(fontName: String, fontExtension: String, failureHandler: @escaping (String) -> Void) {}

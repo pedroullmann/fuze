@@ -1,4 +1,6 @@
+import Core_DesignSystem
 import Core_Resources
+import Foundation
 import SwiftUI
 
 public final class LaunchScreenViewModel: ObservableObject {
@@ -12,14 +14,22 @@ public final class LaunchScreenViewModel: ObservableObject {
         self.state = initialState
         self.environment = environment
         registerFonts()
+        navigateToHome()
     }
 
-    func registerFonts() {
+    private func registerFonts() {
         environment
             .resourcesBuilder()
             .registerFonts(
                 fonts: Font.MontserratStyle.allCases,
                 failureHandler: { debugPrint($0) } // TODO: Logger?
             )
+    }
+
+    private func navigateToHome() {
+        environment.dispatchQueue
+            .asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.state.route = .home
+            }
     }
 }
