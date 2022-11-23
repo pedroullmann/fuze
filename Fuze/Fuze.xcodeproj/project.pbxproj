@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */ = {isa = PBXBuildFile; productRef = E720AB5E292DB88500D578AE /* Core-Resources */; };
 		E72B970E292DC7AD00EB3869 /* Feature-LaunchScreen in Frameworks */ = {isa = PBXBuildFile; productRef = E72B970D292DC7AD00EB3869 /* Feature-LaunchScreen */; };
+		E730B804292E5A9800ED8EE0 /* Root-Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = E730B803292E5A9800ED8EE0 /* Root-Extensions */; };
 		E751224A292DA99E00515525 /* FuzeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7512249292DA99E00515525 /* FuzeApp.swift */; };
 		E751224E292DA99F00515525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E751224D292DA99F00515525 /* Assets.xcassets */; };
 		E7512251292DA99F00515525 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7512250292DA99F00515525 /* Preview Assets.xcassets */; };
@@ -29,6 +30,7 @@
 			files = (
 				E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */,
 				E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */,
+				E730B804292E5A9800ED8EE0 /* Root-Extensions in Frameworks */,
 				E72B970E292DC7AD00EB3869 /* Feature-LaunchScreen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +100,7 @@
 				E7512258292DB06600515525 /* Core-DesignSystem */,
 				E720AB5E292DB88500D578AE /* Core-Resources */,
 				E72B970D292DC7AD00EB3869 /* Feature-LaunchScreen */,
+				E730B803292E5A9800ED8EE0 /* Root-Extensions */,
 			);
 			productName = Fuze;
 			productReference = E7512246292DA99E00515525 /* Fuze.app */;
@@ -371,6 +374,10 @@
 		E72B970D292DC7AD00EB3869 /* Feature-LaunchScreen */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Feature-LaunchScreen";
+		};
+		E730B803292E5A9800ED8EE0 /* Root-Extensions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Root-Extensions";
 		};
 		E7512258292DB06600515525 /* Core-DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;

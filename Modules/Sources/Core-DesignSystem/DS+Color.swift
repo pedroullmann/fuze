@@ -2,6 +2,7 @@ import Root_Extensions
 import SwiftUI
 import UIKit
 
+// MARK: - Hex Color
 public extension Color {
     init(hex: String, fallback: UIColor) {
         let uiColor = UIColor(hex: hex) ?? fallback
@@ -9,6 +10,7 @@ public extension Color {
     }
 }
 
+// MARK: - Dynamic (Dark - Light)
 public extension DS {
     struct DynamicColor {
         let light: Color
@@ -20,6 +22,7 @@ public extension DS {
     }
 }
 
+// MARK: - SwiftUI Modifiers
 public extension View {
     func foregroundColor(_ ds: DS.DynamicColor) -> some View {
         modifier(ForegroundColorModifier(color: ds))

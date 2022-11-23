@@ -11,7 +11,7 @@ extension Font {
     return Font.custom(style.rawValue, size: size, relativeTo: textStyle)
   }
 
-  public enum MontserratStyle: String {
+  public enum MontserratStyle: String, CaseIterable {
     case bold = "Montserrat-Bold"
     case regular = "Montserrat-Regular"
   }

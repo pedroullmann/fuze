@@ -15,7 +15,7 @@ extension Font {
     return Font.custom(style.rawValue, size: size, relativeTo: textStyle)
   }
 
-  public enum {{styleTypeName}}: String {
+  public enum {{styleTypeName}}: String, CaseIterable {
     {% for font in family.fonts %}
     case {{font.style|swiftIdentifier:"pretty"|lowerFirstWord|escapeReservedKeywords}} = "{{font.name}}"
     {% endfor %}
