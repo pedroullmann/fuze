@@ -13,6 +13,7 @@ let package = Package(
 
         // MARK: - Features
         .library(name: "Feature-LaunchScreen", targets: ["Feature-LaunchScreen"]),
+        .library(name: "Feature-Home", targets: ["Feature-Home"]),
 
         // MARK: - Root
         .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
@@ -63,6 +64,15 @@ let package = Package(
         .target(
             name: "Root-Elements",
             dependencies: []
+        ),
+        .target(
+            name: "Feature-Home",
+            dependencies: [
+                "Core-DesignSystem",
+                "Core-Resources",
+                "Core-UI",
+                "Root-Elements"
+            ]
         )
     ]
 )

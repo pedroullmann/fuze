@@ -16,6 +16,7 @@
 		E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E7512258292DB06600515525 /* Core-DesignSystem */; };
 		E7AEF75C292E61D200B55375 /* Core-UI in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF75B292E61D200B55375 /* Core-UI */; };
 		E7AEF75F292E8A4800B55375 /* Root-Elements in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF75E292E8A4800B55375 /* Root-Elements */; };
+		E7AEF761292EB7E100B55375 /* Feature-Home in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF760292EB7E100B55375 /* Feature-Home */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AEF761292EB7E100B55375 /* Feature-Home in Frameworks */,
 				E7AEF75C292E61D200B55375 /* Core-UI in Frameworks */,
 				E7AEF75F292E8A4800B55375 /* Root-Elements in Frameworks */,
 				E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */,
@@ -109,6 +111,7 @@
 				E730B803292E5A9800ED8EE0 /* Root-Extensions */,
 				E7AEF75B292E61D200B55375 /* Core-UI */,
 				E7AEF75E292E8A4800B55375 /* Root-Elements */,
+				E7AEF760292EB7E100B55375 /* Feature-Home */,
 			);
 			productName = Fuze;
 			productReference = E7512246292DA99E00515525 /* Fuze.app */;
@@ -400,6 +403,10 @@
 		E7AEF75E292E8A4800B55375 /* Root-Elements */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Root-Elements";
+		};
+		E7AEF760292EB7E100B55375 /* Feature-Home */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Feature-Home";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
