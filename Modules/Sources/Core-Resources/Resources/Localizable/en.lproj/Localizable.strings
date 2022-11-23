@@ -2,4 +2,10 @@
  EN
 */
 
+// MARK: - Home
 "match_list_title" = "Matchs";
+
+// MARK: - Error
+"error_title" = "Something went wrong";
+"error_subtitle" = "Please wait a few minutes\n before you try again";
+"error_action" = "Try again";

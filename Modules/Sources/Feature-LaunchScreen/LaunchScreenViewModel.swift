@@ -14,7 +14,7 @@ public final class LaunchScreenViewModel: ObservableObject {
         self.state = initialState
         self.environment = environment
         registerFonts()
-        navigateToHome()
+        showHome()
     }
 
     private func registerFonts() {
@@ -26,7 +26,7 @@ public final class LaunchScreenViewModel: ObservableObject {
             )
     }
 
-    private func navigateToHome() {
+    private func showHome() {
         environment.dispatchQueue
             .asyncAfter(deadline: .now() + 1) { [weak self] in
                 self?.state.route = .home

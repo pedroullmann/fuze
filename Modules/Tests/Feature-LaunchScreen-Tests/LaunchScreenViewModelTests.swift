@@ -12,7 +12,7 @@ final class LaunchScreenViewModelTests: XCTestCase {
         XCTAssert(resources.registerFontsWasCalled)
     }
 
-    func test_viewModelInitializer_shouldNavigateToHome() {
+    func test_viewModelInitializer_shouldShowHome() {
         // Given
         let sut: LaunchScreenViewModel
         let immediate = DispatchQueueImmediate()

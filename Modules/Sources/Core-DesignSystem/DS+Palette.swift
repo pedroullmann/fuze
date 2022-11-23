@@ -30,4 +30,9 @@ public extension DS.DynamicColor {
         light: .init(hex: "#ffffffff", fallback: .white),
         dark: .init(hex: "#ffffffff", fallback: .white)
     )
+
+    static let staticRed: Self = .init(
+        light: .init(hex: "#f42a35ff", fallback: .red),
+        dark: .init(hex: "#f42a35ff", fallback: .red)
+    )
 }
