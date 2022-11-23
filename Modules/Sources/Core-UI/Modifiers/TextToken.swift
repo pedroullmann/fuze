@@ -8,8 +8,8 @@ public struct TextToken {
     public let color: DS.DynamicColor
 
     public init(
-        typography: DS.Typography,
-        color: DS.DynamicColor
+        _ typography: DS.Typography,
+        _ color: DS.DynamicColor
     ) {
         self.typography = typography
         self.color = color
