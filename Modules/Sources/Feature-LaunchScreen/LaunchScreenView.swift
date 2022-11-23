@@ -16,13 +16,13 @@ public struct LaunchScreenView: View {
                 .foregroundColor(.textPrimary)
 
             Text("Heading")
-                .textToken(.init(typography: .heading1, color: .textPrimary))
+                .textToken(.init(.heading1, .textPrimary))
 
             Text("Paragraph")
-                .textToken(.init(typography: .paragraph1, color: .textPrimary))
+                .textToken(.init(.paragraph1, .textPrimary))
 
             Text("ParagraphBold")
-                .textToken(.init(typography: .paragraph1Bold, color: .textPrimary))
+                .textToken(.init(.paragraph1Bold, .textPrimary))
 
             Image(Asset.Media.logo)
 

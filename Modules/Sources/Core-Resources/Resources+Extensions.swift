@@ -39,7 +39,7 @@ public struct Resources: Registarable {
 
         var error: Unmanaged<CFError>?
         if CTFontManagerRegisterGraphicsFont(font, &error) == false {
-            failureHandler("Couldn't load Font")
+            failureHandler("Couldn't load font: \(fontName)")
         }
     }
 
