@@ -15,7 +15,8 @@ let package = Package(
         .library(name: "Feature-LaunchScreen", targets: ["Feature-LaunchScreen"]),
 
         // MARK: - Root
-        .library(name: "Root-Extensions", targets: ["Root-Extensions"])
+        .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
+        .library(name: "Root-Elements", targets: ["Root-Elements"])
     ],
     dependencies: [],
     targets: [
@@ -42,11 +43,24 @@ let package = Package(
             dependencies: [
                 "Core-DesignSystem",
                 "Core-Resources",
-                "Core-UI"
+                "Core-UI",
+                "Root-Elements"
+            ]
+        ),
+        .testTarget(
+            name: "Feature-LaunchScreen-Tests",
+            dependencies: [
+                "Feature-LaunchScreen",
+                "Core-Resources",
+                "Root-Elements"
             ]
         ),
         .target(
             name: "Root-Extensions",
+            dependencies: []
+        ),
+        .target(
+            name: "Root-Elements",
             dependencies: []
         )
     ]
