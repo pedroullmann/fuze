@@ -1,5 +1,5 @@
 input_dir: ../Modules/Sources/Core-Resources/Resources
-output_dir: ../Modules/Sources/Core-Resources/Resources/Generated
+output_dir: ../Modules/Sources/Core-Resources/Generated
 
 fonts:
   inputs: Fonts
