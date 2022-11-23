@@ -8,6 +8,7 @@ let package = Package(
     products: [
         // MARK: - Core
         .library(name: "Core-DesignSystem", targets: ["Core-DesignSystem"]),
+        .library(name: "Core-UI", targets: ["Core-UI"]),
         .library(name: "Core-Resources", targets: ["Core-Resources"]),
 
         // MARK: - Features
@@ -25,6 +26,13 @@ let package = Package(
             ]
         ),
         .target(
+            name: "Core-UI",
+            dependencies: [
+                "Core-DesignSystem",
+                "Core-Resources"
+            ]
+        ),
+        .target(
             name: "Core-Resources",
             dependencies: [],
             resources: [.process("Resources")]
@@ -33,7 +41,8 @@ let package = Package(
             name: "Feature-LaunchScreen",
             dependencies: [
                 "Core-DesignSystem",
-                "Core-Resources"
+                "Core-Resources",
+                "Core-UI"
             ]
         ),
         .target(
