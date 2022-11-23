@@ -1,6 +1,26 @@
 import Core_DesignSystem
 import SwiftUI
 
+public extension SwiftUI.Color {
+    private static let colorProvider = DynamicColorProvider()
+
+    init(_ ds: DS.DynamicColor) {
+        self = Self.colorProvider.getColor(ds)
+    }
+}
+
+private struct DynamicColorProvider: View {
+    @Environment(\.colorScheme) private var colorScheme
+
+    var body: some View {
+        EmptyView()
+    }
+
+    func getColor(_ ds: DS.DynamicColor) -> Color {
+        ds.dynamic(colorScheme)
+    }
+}
+
 // MARK: - Dynamic Colors Modifiers
 public extension View {
     func foregroundColor(_ ds: DS.DynamicColor) -> some View {

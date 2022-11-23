@@ -12,8 +12,8 @@ public extension DS.DynamicColor {
     )
 
     static let backgroundPrimary: Self = .init(
-        light: .init(hex: "#252525ff", fallback: .black),
-        dark: .init(hex: "#252525ff", fallback: .black)
+        light: .init(hex: "#161621ff", fallback: .black),
+        dark: .init(hex: "#161621ff", fallback: .black)
     )
 
     static let backgroundSecondary: Self = .init(

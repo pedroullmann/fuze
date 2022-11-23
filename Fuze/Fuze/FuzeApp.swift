@@ -5,9 +5,8 @@ import SwiftUI
 struct FuzeApp: App {
     var body: some Scene {
         WindowGroup {
-            LaunchScreenView(
-                viewModel: .init()
-            )
+            LaunchScreenView(viewModel: .init())
+                .preferredColorScheme(.dark)
         }
     }
 }
