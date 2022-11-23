@@ -11,22 +11,15 @@ public struct LaunchScreenView: View {
     }
 
     public var body: some View {
-        VStack(spacing: .zero) {
-            Text("None")
-                .foregroundColor(.textPrimary)
+        switch viewModel.state.route {
+        case .splash:
+            FullScreenColor(.backgroundPrimary) {
+                Image(Asset.Media.logo)
+            }
+            .statusBarHidden()
 
-            Text("Heading")
-                .textToken(.init(.heading1, .textPrimary))
-
-            Text("Paragraph")
-                .textToken(.init(.paragraph1, .textPrimary))
-
-            Text("ParagraphBold")
-                .textToken(.init(.paragraph1Bold, .textPrimary))
-
-            Image(Asset.Media.logo)
-
+        case .home:
+            Text("Home")
         }
-        .background(.backgroundPrimary)
     }
 }

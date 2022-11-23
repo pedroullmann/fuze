@@ -60,3 +60,11 @@ public struct Resources: Registarable {
 public extension Resources {
     static let bundle = Bundle.module
 }
+
+#if DEBUG
+public struct ResourcesDummy: Registarable {
+    public init() {}
+    public func registerFont(fontName: String, fontExtension: String, failureHandler: @escaping (String) -> Void) {}
+    public func registerFonts(fonts: [Font.MontserratStyle], failureHandler: @escaping (String) -> Void) {}
+}
+#endif
