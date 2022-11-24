@@ -16,11 +16,13 @@ public struct PrimaryText: View {
 #if DEBUG
 struct PrimaryText_Previews: PreviewProvider {
     static var previews: some View {
-        PrimaryText(.errorSubtitle)
-            .environment(\.locale, .init(identifier: "en"))
+        Group {
+            PrimaryText(.errorSubtitle)
+                .environment(\.locale, .init(identifier: "en"))
 
-        PrimaryText(.errorSubtitle)
-            .environment(\.locale, .init(identifier: "pt-BR"))
+            PrimaryText(.errorSubtitle)
+                .environment(\.locale, .init(identifier: "pt-BR"))
+        }
     }
 }
 #endif

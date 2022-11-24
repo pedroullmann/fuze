@@ -28,9 +28,11 @@ public struct FlexibleProgressView: View {
 #if DEBUG
 struct FlexibleProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        previewLarge
-        previewSmall
-        previewMini
+        Group {
+            previewLarge
+            previewSmall
+            previewMini
+        }
     }
 
     static var previewLarge: some View {
