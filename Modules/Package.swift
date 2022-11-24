@@ -46,7 +46,8 @@ let package = Package(
                 "Core-DesignSystem",
                 "Core-Resources",
                 "Core-UI",
-                "Root-Elements"
+                "Root-Elements",
+                "Feature-Home"
             ]
         ),
         .testTarget(

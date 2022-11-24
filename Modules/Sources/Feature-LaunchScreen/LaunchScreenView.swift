@@ -1,6 +1,7 @@
 import Core_DesignSystem
 import Core_UI
 import Core_Resources
+import Feature_Home
 import Root_Elements
 import SwiftUI
 
@@ -17,10 +18,14 @@ public struct LaunchScreenView: View {
             FullScreenColor(.backgroundPrimary) {
                 Image(Asset.Media.logo)
             }
-            .statusBarHidden()
 
         case .home:
-            Text("Home")
+            NavigationView {
+                FullScreenColor(.backgroundPrimary) {
+                    HomeView()
+                }
+            }
+            .navigationViewStyle(.stack)
         }
     }
 }

@@ -4,7 +4,7 @@ output_dir: ../Modules/Sources/Core-Resources/Generated
 strings:
   inputs: Localizable.strings
   outputs:
-    templateName: structured-swift5
+    templatePath: templates/strings-template.stencil
     output: Strings+Generated.swift
     params:
       publicAccess: true

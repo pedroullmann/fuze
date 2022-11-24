@@ -30,17 +30,17 @@ public struct FullScreenLoadingTemplate<Model: Equatable, Content: View>: View {
 
         case .error:
             VStack(spacing: .zero) {
-                Text(Strings.errorTitle)
+                PrimaryText(.errorTitle)
                     .textToken(.init(.heading2, .textPrimary))
 
-                Text(Strings.errorSubtitle)
+                PrimaryText(.errorSubtitle)
                     .textToken(.init(.heading3, .textSecondary))
                     .multilineTextAlignment(.center)
                     .padding(.top, DS.Spacing.xxs)
 
                 Button(
                     action: refreshData,
-                    label: { Text(Strings.errorAction) }
+                    label: { PrimaryText(.errorAction) }
                 )
                 .buttonStyle(PrimaryButtonStyle())
                 .padding(.top, DS.Spacing.m)
