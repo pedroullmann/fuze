@@ -14,8 +14,10 @@
 		E751224E292DA99F00515525 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E751224D292DA99F00515525 /* Assets.xcassets */; };
 		E7512251292DA99F00515525 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7512250292DA99F00515525 /* Preview Assets.xcassets */; };
 		E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = E7512258292DB06600515525 /* Core-DesignSystem */; };
+		E7739568292FA6CC001E6674 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7739567292FA6CC001E6674 /* LaunchScreen.storyboard */; };
 		E7AEF75C292E61D200B55375 /* Core-UI in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF75B292E61D200B55375 /* Core-UI */; };
 		E7AEF75F292E8A4800B55375 /* Root-Elements in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF75E292E8A4800B55375 /* Root-Elements */; };
+		E7AEF761292EB7E100B55375 /* Feature-Home in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF760292EB7E100B55375 /* Feature-Home */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,7 @@
 		E7512249292DA99E00515525 /* FuzeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuzeApp.swift; sourceTree = "<group>"; };
 		E751224D292DA99F00515525 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E7512250292DA99F00515525 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E7739567292FA6CC001E6674 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E7AEF75D292E81B400B55375 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7AEF761292EB7E100B55375 /* Feature-Home in Frameworks */,
 				E7AEF75C292E61D200B55375 /* Core-UI in Frameworks */,
 				E7AEF75F292E8A4800B55375 /* Root-Elements in Frameworks */,
 				E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */,
@@ -67,6 +71,7 @@
 				E7512249292DA99E00515525 /* FuzeApp.swift */,
 				E751224D292DA99F00515525 /* Assets.xcassets */,
 				E751224F292DA99F00515525 /* Preview Content */,
+				E7739567292FA6CC001E6674 /* LaunchScreen.storyboard */,
 			);
 			path = Fuze;
 			sourceTree = "<group>";
@@ -109,6 +114,7 @@
 				E730B803292E5A9800ED8EE0 /* Root-Extensions */,
 				E7AEF75B292E61D200B55375 /* Core-UI */,
 				E7AEF75E292E8A4800B55375 /* Root-Elements */,
+				E7AEF760292EB7E100B55375 /* Feature-Home */,
 			);
 			productName = Fuze;
 			productReference = E7512246292DA99E00515525 /* Fuze.app */;
@@ -136,6 +142,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = E751223D292DA99E00515525;
 			productRefGroup = E7512247292DA99E00515525 /* Products */;
@@ -152,6 +159,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7739568292FA6CC001E6674 /* LaunchScreen.storyboard in Resources */,
 				E7512251292DA99F00515525 /* Preview Assets.xcassets in Resources */,
 				E751224E292DA99F00515525 /* Assets.xcassets in Resources */,
 			);
@@ -221,7 +229,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -275,7 +283,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -299,7 +307,8 @@
 				INFOPLIST_FILE = Fuze/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -333,7 +342,8 @@
 				INFOPLIST_FILE = Fuze/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UIStatusBarHidden = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -400,6 +410,10 @@
 		E7AEF75E292E8A4800B55375 /* Root-Elements */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Root-Elements";
+		};
+		E7AEF760292EB7E100B55375 /* Feature-Home */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Feature-Home";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -7,6 +7,6 @@ public extension DS {
         /// CGSize = (60, 60)
         public static let teamLogo: CGSize = .init(width: 60, height: 60)
         /// CGSize = (128, 44)
-        public static let primaryButton: CGSize = .init(width: 128, height: 44)
+        public static let primaryButton: CGSize = .init(width: 164, height: 44)
     }
 }

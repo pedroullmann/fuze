@@ -6,7 +6,7 @@ struct FuzeApp: App {
     var body: some Scene {
         WindowGroup {
             LaunchScreenView(viewModel: .init())
-                .preferredColorScheme(.dark)
+                .environment(\.locale, .init(identifier: "pt-BR"))
         }
     }
 }
