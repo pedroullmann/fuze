@@ -22,3 +22,14 @@ public struct FullScreenColor<Content: View>: View {
         }
     }
 }
+
+#if DEBUG
+struct FullScreenColor_Previews: PreviewProvider {
+    static var previews: some View {
+        FullScreenColor(.backgroundPrimary) {
+            Text("FullScreenColor")
+                .textToken(.init(.heading1, .textPrimary))
+        }
+    }
+}
+#endif

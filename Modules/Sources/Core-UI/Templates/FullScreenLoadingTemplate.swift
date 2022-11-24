@@ -31,3 +31,53 @@ public struct FullScreenLoadingTemplate<Model: Equatable, Content: View>: View {
         }
     }
 }
+
+#if DEBUG
+struct FullScreenLoadingTemplate_Previews: PreviewProvider {
+    typealias State = DataState<String>
+
+    static var previews: some View {
+        Group {
+            previewLoading
+            previewLoaded
+            previewError
+        }
+    }
+
+    static var previewLoading: some View {
+        let state: State = .loading
+        return FullScreenColor(.backgroundPrimary) {
+            FullScreenLoadingTemplate(
+                dataState: state,
+                modelView: { _ in EmptyView() },
+                refreshData: {}
+            )
+        }
+    }
+
+    static var previewLoaded: some View {
+        let state: State = .loaded("Loaded")
+        return FullScreenColor(.backgroundPrimary) {
+            FullScreenLoadingTemplate(
+                dataState: state,
+                modelView: {
+                    Text($0)
+                        .textToken(.init(.heading1, .textPrimary))
+                },
+                refreshData: {}
+            )
+        }
+    }
+
+    static var previewError: some View {
+        let state: State = .error
+        return FullScreenColor(.backgroundPrimary) {
+            FullScreenLoadingTemplate(
+                dataState: state,
+                modelView: { _ in EmptyView() },
+                refreshData: {}
+            )
+        }
+    }
+}
+#endif
