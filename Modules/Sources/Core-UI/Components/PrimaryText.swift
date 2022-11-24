@@ -12,3 +12,15 @@ public struct PrimaryText: View {
         Text(localized.key, bundle: Resources.bundle)
     }
 }
+
+#if DEBUG
+struct PrimaryText_Previews: PreviewProvider {
+    static var previews: some View {
+        PrimaryText(.errorSubtitle)
+            .environment(\.locale, .init(identifier: "en"))
+
+        PrimaryText(.errorSubtitle)
+            .environment(\.locale, .init(identifier: "pt-BR"))
+    }
+}
+#endif

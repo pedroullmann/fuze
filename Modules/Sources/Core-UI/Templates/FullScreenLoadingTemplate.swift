@@ -21,30 +21,13 @@ public struct FullScreenLoadingTemplate<Model: Equatable, Content: View>: View {
     public var body: some View {
         switch dataState {
         case .loading:
-            ProgressView()
-                .progressViewStyle(CircularProgressViewStyle(tint: Color(.textPrimary)))
-                .controlSize(.large)
+            FlexibleProgressView(style: .init())
 
         case let .loaded(model):
             modelView(model)
 
         case .error:
-            VStack(spacing: .zero) {
-                PrimaryText(.errorTitle)
-                    .textToken(.init(.heading2, .textPrimary))
-
-                PrimaryText(.errorSubtitle)
-                    .textToken(.init(.heading3, .textSecondary))
-                    .multilineTextAlignment(.center)
-                    .padding(.top, DS.Spacing.xxs)
-
-                Button(
-                    action: refreshData,
-                    label: { PrimaryText(.errorAction) }
-                )
-                .buttonStyle(PrimaryButtonStyle())
-                .padding(.top, DS.Spacing.m)
-            }
+            ErrorView(model: .init(action: refreshData))
         }
     }
 }
