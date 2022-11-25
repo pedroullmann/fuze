@@ -5,14 +5,16 @@ import SwiftUI
 // MARK: - Strings
 
 public extension LocalizedString {
-  /// Try again
+  /// Tentar novamente
   static let errorAction: Self = .init(lookupKey: "error_action")
-  /// Please wait a few minutes\n before you try again
+  /// Aguarde alguns instantes\ne tente novamente
   static let errorSubtitle: Self = .init(lookupKey: "error_subtitle")
-  /// Something went wrong
+  /// Algo deu errado
   static let errorTitle: Self = .init(lookupKey: "error_title")
-  /// Matchs
+  /// Partidas
   static let matchListTitle: Self = .init(lookupKey: "match_list_title")
+  /// Agora
+  static let now: Self = .init(lookupKey: "now")
 }
 
 // MARK: - Implementation Details

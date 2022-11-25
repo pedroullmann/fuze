@@ -38,6 +38,16 @@
                ReferencedContainer = "container:../Modules">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "Root-Elements-Tests"
+               BuildableName = "Root-Elements-Tests"
+               BlueprintName = "Root-Elements-Tests"
+               ReferencedContainer = "container:../Modules">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

@@ -3,7 +3,7 @@ import PackageDescription
 
 let package = Package(
     name: "Modules",
-    defaultLocalization: "en",
+    defaultLocalization: "pt-BR",
     platforms: [.iOS(.v15)],
     products: [
         // MARK: - Core
@@ -65,6 +65,12 @@ let package = Package(
         .target(
             name: "Root-Elements",
             dependencies: []
+        ),
+        .testTarget(
+            name: "Root-Elements-Tests",
+            dependencies: [
+                "Root-Elements"
+            ]
         ),
         .target(
             name: "Feature-Home",
