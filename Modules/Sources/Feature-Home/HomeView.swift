@@ -4,37 +4,47 @@ import Core_UI
 import Root_Elements
 import SwiftUI
 
-// TODO: Remove
-private struct MockIdentifiable: Equatable, Identifiable {
-    public var id: String = UUID().uuidString
-}
-
 public struct HomeView: View {
-    // TODO: Remove
-    private var mock: DataState<[MockIdentifiable]> = .error
+    @ObservedObject private var viewModel: HomeViewModel
 
-    public init() {}
+    public init(viewModel: HomeViewModel) {
+        self.viewModel = viewModel
+    }
 
     public var body: some View {
         FullScreenLoadingTemplate(
-            dataState: mock,
+            dataState: viewModel.state.dataState,
             modelView: loadedView,
-            refreshData: { /* Refresh */ }
+            refreshData: viewModel.fetch
         )
         .localizedNavigationTitle(.matchListTitle)
+        .onAppear(perform: viewModel.fetch)
     }
 
-    private func loadedView(_ model: [MockIdentifiable]) -> some View {
+    private func loadedView(_ elements: [MatchModel]) -> some View {
         PaginationView(
-            elements: model,
+            elements: elements,
             rowView: rowView,
-            loadMore: { /* Load more */ }
+            loadMore: viewModel.loadMore,
+            isLoadingMore: viewModel.state.isLoadingMore
         )
+        .refreshable(action: { viewModel.refresh() })
         .padding(.horizontal, DS.Spacing.m)
     }
 
-    // TODO: Card View
-    private func rowView(_ model: MockIdentifiable) -> some View {
-        EmptyView()
+    private func rowView(_ element: MatchModel) -> some View {
+        ZStack(alignment: .bottom) {
+            RoundedRectangle(
+                cornerRadius: DS.BorderRadius.small,
+                style: .continuous
+            )
+            .foregroundColor(.backgroundSecondary)
+
+            Divider()
+                .background(.dividerPrimary)
+                .padding(.bottom, DS.Spacing.xm)
+        }
+        .frame(height: DS.Components.matchCard.height)
+        .frame(maxWidth: DS.Components.matchCard.width)
     }
 }

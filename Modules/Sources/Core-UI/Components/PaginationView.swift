@@ -19,19 +19,22 @@ public extension PaginationView {
 public struct PaginationView<Element: Identifiable, Content: View>: View {
     private let elements: [Element]
     private let rowView: (Element) -> Content
-    private let loadMore: () -> Void
+    private let loadMore: (_ offset: Int) -> Void
     private let style: Style
+    private let isLoadingMore: Bool
 
     public init(
         elements: [Element],
         @ViewBuilder rowView: @escaping (Element) -> Content,
-        loadMore: @escaping () -> Void,
-        style: Style = .init()
+        loadMore: @escaping (_ offset: Int) -> Void,
+        style: Style = .init(),
+        isLoadingMore: Bool = false
     ) {
         self.elements = elements
         self.rowView = rowView
         self.loadMore = loadMore
         self.style = style
+        self.isLoadingMore = isLoadingMore
     }
 
     public var body: some View {
@@ -39,6 +42,11 @@ public struct PaginationView<Element: Identifiable, Content: View>: View {
             LazyVStack(spacing: style.elementSpacing) {
                 ForEach(Array(elements.enumerated()), id: \.0) { offset, element in
                     rowView(element)
+                        .onAppear { loadMore(offset) }
+                }
+
+                if isLoadingMore {
+                    FlexibleProgressView(style: .init(size: .regular))
                 }
             }
             .padding(.top, style.paddingTop)
@@ -63,7 +71,7 @@ struct PaginationView_Previews: PreviewProvider {
         PaginationView(
             elements: elements,
             rowView: { Text($0.id) },
-            loadMore: {}
+            loadMore: { _ in }
         )
     }
 }
