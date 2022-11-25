@@ -25,9 +25,10 @@ public struct HomeView: View {
         PaginationView(
             elements: elements,
             rowView: rowView,
-            loadMore: { /* Load more */ }
+            loadMore: viewModel.loadMore,
+            isLoadingMore: viewModel.state.isLoadingMore
         )
-        .refreshable(action: { viewModel.fetch() })
+        .refreshable(action: { viewModel.refresh() })
         .padding(.horizontal, DS.Spacing.m)
     }
 
@@ -43,7 +44,7 @@ public struct HomeView: View {
                 .background(.dividerPrimary)
                 .padding(.bottom, DS.Spacing.xm)
         }
-        .frame(height: 176)
-        .frame(maxWidth: 380)
+        .frame(height: DS.Components.matchCard.height)
+        .frame(maxWidth: DS.Components.matchCard.width)
     }
 }

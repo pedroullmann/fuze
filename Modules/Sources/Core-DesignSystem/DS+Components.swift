@@ -8,5 +8,7 @@ public extension DS {
         public static let teamLogo: CGSize = .init(width: 60, height: 60)
         /// CGSize = (128, 44)
         public static let primaryButton: CGSize = .init(width: 164, height: 44)
+        /// CGSize = (380, 180)
+        public static let matchCard: CGSize = .init(width: 380, height: 180)
     }
 }

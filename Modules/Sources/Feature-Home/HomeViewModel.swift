@@ -18,4 +18,20 @@ public final class HomeViewModel: ObservableObject {
         let elements = MatchModel.elements(15)
         state.dataState = .loaded(elements)
     }
+
+    func refresh() {
+        state.pagination = .initial
+        fetch()
+    }
+
+    func loadMore(_ offset: Int) {
+        guard state.isLoadingMore == false else { return }
+        guard state.pagination.limit == false else { return }
+        guard offset == state.pagination.total else { return }
+
+        state.isLoadingMore = true
+        state.pagination.page += 1
+        // TODO: Service
+        // TODO: Validate when API return empty array
+    }
 }
