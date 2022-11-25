@@ -21,36 +21,39 @@ struct MatchRowView: View {
 
             VStack(spacing: .zero) {
                 Spacer()
-
-                HStack(spacing: DS.Spacing.m) {
-                    match.opponents.first.map(opponentView)
-
-                    Text("vs")
-                        .textToken(.init(.paragraph2, .textSecondary))
-
-                    match.opponents.last.map(opponentView)
-                }
-
+                versusView
                 Spacer()
-
-                Divider()
-                    .background(.dividerPrimary)
-
-                HStack(spacing: .zero) {
-                    ImageView(urlString: match.league.imageUrl ?? "", size: .small)
-                        .padding(.leading, DS.Spacing.s)
-
-                    Text("\(match.league.name) | \(match.serie)")
-                        .textToken(.init(.paragraph4, .textPrimary))
-                        .padding(.leading, DS.Spacing.xxs)
-
-                    Spacer()
-                }
-                .padding(.vertical, DS.Spacing.xxs)
+                Divider().background(.dividerPrimary)
+                bottomView
             }
         }
         .frame(height: DS.Components.matchCard.height)
         .frame(maxWidth: DS.Components.matchCard.width)
+    }
+
+    private var versusView: some View {
+        HStack(spacing: DS.Spacing.m) {
+            match.opponents.first.map(opponentView)
+
+            Text("vs")
+                .textToken(.init(.paragraph2, .textSecondary))
+
+            match.opponents.last.map(opponentView)
+        }
+    }
+
+    private var bottomView: some View {
+        HStack(spacing: .zero) {
+            ImageView(urlString: match.league.imageUrl ?? "", size: .small)
+                .padding(.leading, DS.Spacing.s)
+
+            Text("\(match.league.name) | \(match.serie)")
+                .textToken(.init(.paragraph4, .textPrimary))
+                .padding(.leading, DS.Spacing.xxs)
+
+            Spacer()
+        }
+        .padding(.vertical, DS.Spacing.xxs)
     }
 
     private var backgroundView: some View {
@@ -92,3 +95,45 @@ struct MatchRowView: View {
         }
     }
 }
+
+#if DEBUG
+struct MatchRowView_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            previewMatchNow
+            previewMatchThisWeek
+            previewMatchNextWeek
+        }
+    }
+
+    static var previewMatchNow: some View {
+        MatchRowView(
+            match: .fixture(
+                beginAt: "2022-11-25T18:00:00Z",
+                opponents: MatchModel.Opponent.elements,
+                status: .running
+            )
+        )
+    }
+
+    static var previewMatchThisWeek: some View {
+        MatchRowView(
+            match: .fixture(
+                beginAt: "2022-11-26T18:00:00Z",
+                opponents: MatchModel.Opponent.elements,
+                status: .notStarted
+            )
+        )
+    }
+
+    static var previewMatchNextWeek: some View {
+        MatchRowView(
+            match: .fixture(
+                beginAt: "2022-11-31T18:00:00Z",
+                opponents: MatchModel.Opponent.elements,
+                status: .notStarted
+            )
+        )
+    }
+}
+#endif
