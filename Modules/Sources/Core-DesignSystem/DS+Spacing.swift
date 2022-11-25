@@ -9,6 +9,8 @@ public extension DS {
         public static let s: CGFloat = 16
         /// Value: 24
         public static let m: CGFloat = 24
+        /// Value: 32
+        public static let xm: CGFloat = 32
         /// Value: 64
         public static let l: CGFloat = 64
     }

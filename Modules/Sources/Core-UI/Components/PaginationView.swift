@@ -39,6 +39,7 @@ public struct PaginationView<Element: Identifiable, Content: View>: View {
             LazyVStack(spacing: style.elementSpacing) {
                 ForEach(Array(elements.enumerated()), id: \.0) { offset, element in
                     rowView(element)
+                        .onAppear { print(offset) }
                 }
             }
             .padding(.top, style.paddingTop)
