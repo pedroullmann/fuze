@@ -4,6 +4,7 @@
 
 // MARK: - Home
 "match_list_title" = "Partidas";
+"now" = "Agora";
 
 // MARK: - Error
 "error_title" = "Algo deu errado";

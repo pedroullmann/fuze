@@ -5,6 +5,8 @@ public extension DS {
     enum Spacing {
         /// Value: 8
         public static let xxs: CGFloat = 8
+        /// Value: 12
+        public static let xs: CGFloat = 16
         /// Value: 16
         public static let s: CGFloat = 16
         /// Value: 24

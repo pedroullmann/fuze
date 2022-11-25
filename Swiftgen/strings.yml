@@ -1,4 +1,4 @@
-input_dir: ../Modules/Sources/Core-Resources/Resources/Localizable/en.lproj
+input_dir: ../Modules/Sources/Core-Resources/Resources/Localizable/pt-BR.lproj
 output_dir: ../Modules/Sources/Core-Resources/Generated
 
 strings:

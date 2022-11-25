@@ -90,4 +90,12 @@ public extension DS.Typography {
         ),
         size: 8
     )
+
+    static let paragraph4Bold: Self = .init(
+        font: .init(
+            family: "Montserrat",
+            style: "Bold"
+        ),
+        size: 8
+    )
 }

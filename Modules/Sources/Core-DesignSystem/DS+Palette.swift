@@ -22,8 +22,8 @@ public extension DS.DynamicColor {
     )
 
     static let elementOverSecondary: Self = .init(
-        light: .init(hex: "#fafafa33", fallback: .darkGray),
-        dark: .init(hex: "#fafafa33", fallback: .darkGray)
+        light: .init(hex: "#fafafa20", fallback: .darkGray),
+        dark: .init(hex: "#fafafa20", fallback: .darkGray)
     )
 
     static let dividerPrimary: Self = .init(
@@ -34,5 +34,10 @@ public extension DS.DynamicColor {
     static let staticRed: Self = .init(
         light: .init(hex: "#f42a35ff", fallback: .red),
         dark: .init(hex: "#f42a35ff", fallback: .red)
+    )
+
+    static let placeholder: Self = .init(
+        light: .init(hex: "#c4c4c4ff", fallback: .lightGray),
+        dark: .init(hex: "#c4c4c4ff", fallback: .lightGray)
     )
 }

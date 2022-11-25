@@ -2,17 +2,17 @@ import Foundation
 
 public struct MatchModel: Equatable, Identifiable {
     public var id: String
-    public let beginAt: String
+    public let beginAt: String?
     public let opponents: [Opponent]
-    public let league: String
+    public let league: League
     public let serie: String
     public let status: Status
 
     public init(
         id: String,
-        beginAt: String,
+        beginAt: String?,
         opponents: [Opponent],
-        league: String,
+        league: League,
         serie: String,
         status: Status
     ) {
@@ -26,7 +26,7 @@ public struct MatchModel: Equatable, Identifiable {
 
     public struct Opponent: Equatable, Identifiable {
         public var id: String
-        public let imageUrl: String
+        public let imageUrl: String?
         public let name: String
 
         public init(
@@ -40,30 +40,42 @@ public struct MatchModel: Equatable, Identifiable {
         }
     }
 
+    public struct League: Equatable {
+        public let name: String
+        public let imageUrl: String?
+
+        public init(
+            name: String,
+            imageUrl: String
+        ) {
+            self.name = name
+            self.imageUrl = imageUrl
+        }
+    }
+
     public enum Status: String, Equatable {
         case finished
         case notPlayed = "not_played"
         case notStarted = "not_started"
         case running
+
+        public var isRunning: Bool {
+            self == .running
+        }
     }
 }
 
 #if DEBUG
 public extension MatchModel {
     static func elements(_ quantity: Int) -> [Self] {
-        (0...quantity).map {
-            .fixture(
-                id: "\($0)",
-                opponents: Opponent.elements
-            )
-        }
+        (0...quantity).map { .fixture(id: "\($0)", opponents: Opponent.elements) }
     }
 
     static func fixture(
         id: String = "ID",
         beginAt: String = "Date",
         opponents: [Opponent] = [],
-        league: String = "League",
+        league: League = .init(name: "League", imageUrl: "Mock"),
         serie: String = "Serie",
         status: Status = .notStarted
     ) -> Self {

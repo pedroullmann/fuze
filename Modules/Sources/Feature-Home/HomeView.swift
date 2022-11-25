@@ -33,18 +33,6 @@ public struct HomeView: View {
     }
 
     private func rowView(_ element: MatchModel) -> some View {
-        ZStack(alignment: .bottom) {
-            RoundedRectangle(
-                cornerRadius: DS.BorderRadius.small,
-                style: .continuous
-            )
-            .foregroundColor(.backgroundSecondary)
-
-            Divider()
-                .background(.dividerPrimary)
-                .padding(.bottom, DS.Spacing.xm)
-        }
-        .frame(height: DS.Components.matchCard.height)
-        .frame(maxWidth: DS.Components.matchCard.width)
+        MatchRowView(match: element)
     }
 }

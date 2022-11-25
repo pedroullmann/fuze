@@ -2,7 +2,7 @@ import Foundation
 
 public struct MatchResponse: Decodable {
     public let id: String
-    public let beginAt: String
+    public let beginAt: String?
     public let opponents: [Opponent]
     public let league: League
     public let serie: Serie
@@ -19,7 +19,7 @@ public struct MatchResponse: Decodable {
 
     public struct Opponent: Decodable {
         public let id: String
-        public let imageUrl: String
+        public let imageUrl: String?
         public let name: String
 
         public enum CodingKeys: String, CodingKey {
@@ -31,6 +31,12 @@ public struct MatchResponse: Decodable {
 
     public struct League: Decodable {
         public let name: String
+        public let imageUrl: String?
+
+        public enum CodingKeys: String, CodingKey {
+            case name
+            case imageUrl = "image_url"
+        }
     }
 
     public struct Serie: Decodable {
