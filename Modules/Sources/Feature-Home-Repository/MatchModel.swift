@@ -31,7 +31,7 @@ public struct MatchModel: Equatable, Identifiable {
 
         public init(
             id: String,
-            imageUrl: String,
+            imageUrl: String?,
             name: String
         ) {
             self.id = id
@@ -46,7 +46,7 @@ public struct MatchModel: Equatable, Identifiable {
 
         public init(
             name: String,
-            imageUrl: String
+            imageUrl: String?
         ) {
             self.name = name
             self.imageUrl = imageUrl

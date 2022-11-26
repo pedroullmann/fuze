@@ -1,4 +1,5 @@
 import Combine
+import Feature_Home_Repository
 import SwiftUI
 
 public final class HomeViewModel: ObservableObject {
@@ -7,7 +8,7 @@ public final class HomeViewModel: ObservableObject {
 
     public init(
         initialState: HomeViewModelState = .init(),
-        environment: HomeViewModelEnvironment = .init()
+        environment: HomeViewModelEnvironment
     ) {
         self.state = initialState
         self.environment = environment

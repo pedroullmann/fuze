@@ -22,8 +22,8 @@ public extension HTTPRequestProtocol {
         URL(string: "https://api.pandascore.co")!
     }
 
-    var parameters: HTTPRequestParameters {
-        .requestPlain
+    var method: HTTPMethod {
+        .get
     }
 
     var headers: [String: String]? {

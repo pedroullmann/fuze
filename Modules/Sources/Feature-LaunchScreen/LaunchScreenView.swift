@@ -22,7 +22,11 @@ public struct LaunchScreenView: View {
         case .home:
             NavigationView {
                 FullScreenColor(.backgroundPrimary) {
-                    HomeView(viewModel: .init())
+                    HomeView(
+                        viewModel: .init(
+                            environment: .init(service: viewModel.environment.homeService)
+                        )
+                    )
                 }
             }
             .navigationViewStyle(.stack)
