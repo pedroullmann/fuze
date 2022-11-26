@@ -20,6 +20,8 @@
 		E7AEF761292EB7E100B55375 /* Feature-Home in Frameworks */ = {isa = PBXBuildFile; productRef = E7AEF760292EB7E100B55375 /* Feature-Home */; };
 		E7D5585A2931B711001D24D1 /* Core-Networking in Frameworks */ = {isa = PBXBuildFile; productRef = E7D558592931B711001D24D1 /* Core-Networking */; };
 		E7D5585C2931B711001D24D1 /* Core-Networking-Interface in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5585B2931B711001D24D1 /* Core-Networking-Interface */; };
+		E7D5585E2931B979001D24D1 /* Feature-Home-Repository in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5585D2931B979001D24D1 /* Feature-Home-Repository */; };
+		E7D558602931B979001D24D1 /* Feature-Home-Repository-Live in Frameworks */ = {isa = PBXBuildFile; productRef = E7D5585F2931B979001D24D1 /* Feature-Home-Repository-Live */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 				E7AEF75C292E61D200B55375 /* Core-UI in Frameworks */,
 				E7AEF75F292E8A4800B55375 /* Root-Elements in Frameworks */,
 				E7D5585C2931B711001D24D1 /* Core-Networking-Interface in Frameworks */,
+				E7D558602931B979001D24D1 /* Feature-Home-Repository-Live in Frameworks */,
+				E7D5585E2931B979001D24D1 /* Feature-Home-Repository in Frameworks */,
 				E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */,
 				E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */,
 				E7D5585A2931B711001D24D1 /* Core-Networking in Frameworks */,
@@ -121,6 +125,8 @@
 				E7AEF760292EB7E100B55375 /* Feature-Home */,
 				E7D558592931B711001D24D1 /* Core-Networking */,
 				E7D5585B2931B711001D24D1 /* Core-Networking-Interface */,
+				E7D5585D2931B979001D24D1 /* Feature-Home-Repository */,
+				E7D5585F2931B979001D24D1 /* Feature-Home-Repository-Live */,
 			);
 			productName = Fuze;
 			productReference = E7512246292DA99E00515525 /* Fuze.app */;
@@ -428,6 +434,14 @@
 		E7D5585B2931B711001D24D1 /* Core-Networking-Interface */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Core-Networking-Interface";
+		};
+		E7D5585D2931B979001D24D1 /* Feature-Home-Repository */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Feature-Home-Repository";
+		};
+		E7D5585F2931B979001D24D1 /* Feature-Home-Repository-Live */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Feature-Home-Repository-Live";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

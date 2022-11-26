@@ -1,13 +1,20 @@
 import Foundation
+import Feature_Home_Repository
 
 public struct HomeViewModelEnvironment {
-    public init() {}
+    let service: HomeService
+
+    public init(service: HomeService) {
+        self.service = service
+    }
 }
 
 #if DEBUG
 public extension HomeViewModelEnvironment {
-    static func fixture() -> Self {
-        .init()
+    static func fixture(
+        service: HomeService = .failing
+    ) -> Self {
+        .init(service: service)
     }
 }
 #endif

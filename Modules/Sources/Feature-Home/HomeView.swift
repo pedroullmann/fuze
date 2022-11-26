@@ -1,6 +1,7 @@
 import Core_DesignSystem
 import Core_Resources
 import Core_UI
+import Feature_Home_Repository
 import Root_Elements
 import SwiftUI
 

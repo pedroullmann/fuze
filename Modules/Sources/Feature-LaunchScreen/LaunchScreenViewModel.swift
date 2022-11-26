@@ -5,11 +5,11 @@ import SwiftUI
 
 public final class LaunchScreenViewModel: ObservableObject {
     @Published private(set) var state: LaunchScreenState
-    private let environment: LaunchScreenEnvironment
+    let environment: LaunchScreenEnvironment
 
     public init(
         initialState: LaunchScreenState = .init(),
-        environment: LaunchScreenEnvironment = .init()
+        environment: LaunchScreenEnvironment
     ) {
         self.state = initialState
         self.environment = environment

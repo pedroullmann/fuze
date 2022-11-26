@@ -16,6 +16,8 @@ let package = Package(
         // MARK: - Features
         .library(name: "Feature-LaunchScreen", targets: ["Feature-LaunchScreen"]),
         .library(name: "Feature-Home", targets: ["Feature-Home"]),
+        .library(name: "Feature-Home-Repository", targets: ["Feature-Home-Repository"]),
+        .library(name: "Feature-Home-Repository-Live", targets: ["Feature-Home-Repository-Live"]),
 
         // MARK: - Root
         .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
@@ -59,7 +61,8 @@ let package = Package(
                 "Core-Resources",
                 "Core-UI",
                 "Root-Elements",
-                "Feature-Home"
+                "Feature-Home",
+                "Feature-Home-Repository"
             ]
         ),
         .testTarget(
@@ -90,7 +93,22 @@ let package = Package(
                 "Core-DesignSystem",
                 "Core-Resources",
                 "Core-UI",
-                "Root-Elements"
+                "Root-Elements",
+                "Feature-Home-Repository"
+            ]
+        ),
+        .target(
+            name: "Feature-Home-Repository",
+            dependencies: [
+                "Core-Networking-Interface"
+            ]
+        ),
+        .target(
+            name: "Feature-Home-Repository-Live",
+            dependencies: [
+                "Feature-Home-Repository",
+                "Core-Networking",
+                "Core-Networking-Interface"
             ]
         )
     ]

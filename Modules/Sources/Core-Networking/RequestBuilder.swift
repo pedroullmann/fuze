@@ -1,12 +1,14 @@
 import Core_Networking_Interface
 import Foundation
 
-protocol RequestBuilderProtocol {
+public protocol RequestBuilderProtocol {
     func build(from request: HTTPRequestProtocol) throws -> URLRequest
 }
 
-struct DefaultRequestBuilder: RequestBuilderProtocol {
-    func build(from request: HTTPRequestProtocol) throws -> URLRequest {
+public struct DefaultRequestBuilder: RequestBuilderProtocol {
+    public init() {}
+
+    public func build(from request: HTTPRequestProtocol) throws -> URLRequest {
         let endpoint = request.baseURL.appendingPathComponent(request.path)
 
         var urlRequest: URLRequest = .init(url: endpoint)

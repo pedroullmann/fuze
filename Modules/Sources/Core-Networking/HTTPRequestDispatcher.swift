@@ -7,7 +7,7 @@ public struct HTTPRequestDispatcher: HTTPRequestDispatcherProtocol {
     private let requestBuilder: RequestBuilderProtocol
     private let decoder: JSONDecoder
 
-    init(
+    public init(
         session: URLSessionProtocol = URLSession.shared,
         requestBuilder: RequestBuilderProtocol = DefaultRequestBuilder(),
         decoder: JSONDecoder = .init()
