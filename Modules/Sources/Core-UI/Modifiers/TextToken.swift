@@ -2,7 +2,6 @@ import Core_DesignSystem
 import Core_Resources
 import SwiftUI
 
-// MARK: - Token
 public struct TextToken {
     public let typography: DS.Typography
     public let color: DS.DynamicColor
@@ -22,7 +21,6 @@ public extension View {
     }
 }
 
-// MARK: - Modifier
 struct TextTokensModifier: ViewModifier {
     private let token: TextToken
 
