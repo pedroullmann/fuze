@@ -17,7 +17,6 @@ public extension DS {
     }
 }
 
-// MARK: - Tokens
 public extension DS.Typography {
     static let heading1: Self = .init(
         font: .init(

@@ -10,6 +10,8 @@ let package = Package(
         .library(name: "Core-DesignSystem", targets: ["Core-DesignSystem"]),
         .library(name: "Core-UI", targets: ["Core-UI"]),
         .library(name: "Core-Resources", targets: ["Core-Resources"]),
+        .library(name: "Core-Networking", targets: ["Core-Networking"]),
+        .library(name: "Core-Networking-Interface", targets: ["Core-Networking-Interface"]),
 
         // MARK: - Features
         .library(name: "Feature-LaunchScreen", targets: ["Feature-LaunchScreen"]),
@@ -39,6 +41,16 @@ let package = Package(
             name: "Core-Resources",
             dependencies: [],
             resources: [.process("Resources")]
+        ),
+        .target(
+            name: "Core-Networking",
+            dependencies: [
+                "Core-Networking-Interface"
+            ]
+        ),
+        .target(
+            name: "Core-Networking-Interface",
+            dependencies: []
         ),
         .target(
             name: "Feature-LaunchScreen",

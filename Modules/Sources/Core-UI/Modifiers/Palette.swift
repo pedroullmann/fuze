@@ -21,7 +21,6 @@ private struct DynamicColorProvider: View {
     }
 }
 
-// MARK: - Dynamic Colors Modifiers
 public extension View {
     func foregroundColor(_ ds: DS.DynamicColor) -> some View {
         modifier(ForegroundColorModifier(color: ds))

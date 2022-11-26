@@ -2,7 +2,6 @@ import CoreGraphics
 import Foundation
 import SwiftUI
 
-// MARK: - Registarable Protocol
 public protocol Registarable {
     func registerFont(
         fontName: String,
@@ -56,7 +55,6 @@ public struct Resources: Registarable {
     }
 }
 
-// MARK: - Bundle
 public extension Resources {
     static let bundle = Bundle.module
 }
