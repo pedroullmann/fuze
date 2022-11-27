@@ -23,7 +23,12 @@ let package = Package(
         .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
         .library(name: "Root-Elements", targets: ["Root-Elements"])
     ],
-    dependencies: [],
+    dependencies: [
+        .package(
+            url: "https://github.com/pointfreeco/combine-schedulers",
+            from: "0.9.1"
+        )
+    ],
     targets: [
         .target(
             name: "Core-DesignSystem",
@@ -94,7 +99,17 @@ let package = Package(
                 "Core-Resources",
                 "Core-UI",
                 "Root-Elements",
-                "Feature-Home-Repository"
+                "Feature-Home-Repository",
+                .product(name: "CombineSchedulers", package: "combine-schedulers")
+            ]
+        ),
+        .testTarget(
+            name: "Feature-Home-Tests",
+            dependencies: [
+                "Feature-Home",
+                "Feature-Home-Repository",
+                "Root-Elements",
+                "Core-Networking-Interface"
             ]
         ),
         .target(
