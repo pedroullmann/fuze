@@ -27,19 +27,6 @@ public extension HomeService {
         }
     )
 
-    static let successful: Self = .fixture(
-        fetchRunningMatchs: {
-            Just(MatchModel.elements(1))
-                .setFailureType(to: HTTPRequestError.self)
-                .eraseToAnyPublisher()
-        },
-        fetchUpcomingMatchs: { _, _ in
-            Just(MatchModel.elements(5))
-                .setFailureType(to: HTTPRequestError.self)
-                .eraseToAnyPublisher()
-        }
-    )
-
     static func fixture(
         fetchRunningMatchs: @escaping () -> AnyPublisher<[MatchModel], HTTPRequestError>,
         fetchUpcomingMatchs: @escaping (_ page: Int, _ size: Int) -> AnyPublisher<[MatchModel], HTTPRequestError>

@@ -23,7 +23,7 @@ public final class HomeViewModel: ObservableObject {
         let upcomingMatchs = environment.service.fetchUpcomingMatchs(page, size)
 
         Publishers.Zip(runningMatchs, upcomingMatchs)
-            .receive(on: DispatchQueue.main)
+            .receive(on: environment.scheduler)
             .sink(
                 receiveCompletion: { [self] response in
                     if case .failure = response { state.dataState = .error }
@@ -44,15 +44,17 @@ public final class HomeViewModel: ObservableObject {
         guard offset == (state.pagination.total - 1) else { return }
 
         state.isLoadingMore = true
-        state.pagination.page += 1
         let page = state.pagination.page
         let size = state.pagination.size
 
         environment.service.fetchUpcomingMatchs(page, size)
-            .receive(on: DispatchQueue.main)
+            .receive(on: environment.scheduler)
             .sink(
-                receiveCompletion: { [self] _ in state.isLoadingMore = false },
+                receiveCompletion: { [self] _ in
+                    state.isLoadingMore = false
+                },
                 receiveValue: { [self] upcoming in
+                    state.pagination.page += 1
                     guard upcoming.isEmpty == false else {
                         state.pagination.limit = true
                         return
