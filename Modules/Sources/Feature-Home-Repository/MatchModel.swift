@@ -1,16 +1,16 @@
 import Foundation
 
 public struct MatchModel: Equatable, Identifiable {
-    public var id: Int?
-    public let scheduledAt: String?
+    public var id: Int
+    public let scheduledAt: String
     public let opponents: [Opponent]
     public let league: League
     public let serie: String
     public let status: Status
 
     public init(
-        id: Int?,
-        scheduledAt: String?,
+        id: Int,
+        scheduledAt: String,
         opponents: [Opponent],
         league: League,
         serie: String,

@@ -66,18 +66,18 @@ struct MatchRowView: View {
             )
             .foregroundColor(.backgroundSecondary)
 
-            match.scheduledAt.map(statusView)
+            statusView
         }
     }
 
     @ViewBuilder
-    private func statusView(_ beginAt: String) -> some View {
+    private var statusView: some View {
         Group {
             if match.status.isRunning {
                 PrimaryText(.now)
                     .textCase(.uppercase)
             } else {
-                formatter.toLocal(beginAt).map(Text.init)
+                formatter.toLocal(match.scheduledAt).map(Text.init)
             }
         }
         .textToken(.init(.paragraph4Bold, .textPrimary))

@@ -2,7 +2,7 @@ import Foundation
 
 public struct MatchResponse: Decodable {
     public let id: Int
-    public let scheduledAt: String?
+    public let scheduledAt: String
     public let opponents: [OpponentObject]
     public let league: League
     public let serie: Serie

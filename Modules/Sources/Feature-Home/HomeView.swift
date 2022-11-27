@@ -33,6 +33,9 @@ public struct HomeView: View {
     }
 
     private func rowView(_ element: MatchModel) -> some View {
-        MatchRowView(match: element)
+        Button(
+            action: { /* Navigate */ },
+            label: { MatchRowView(match: element) }
+        )
     }
 }
