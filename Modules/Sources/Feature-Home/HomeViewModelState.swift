@@ -22,20 +22,19 @@ public extension HomeViewModelState {
     struct Pagination: Equatable {
         public var page: Int
         public var limit: Bool
+        public var total: Int
         public let size: Int
-
-        public var total: Int {
-            (page * size) - 1
-        }
 
         public init(
             page: Int = 1,
             limit: Bool = false,
-            size: Int = 15
+            size: Int = 25,
+            total: Int = 0
         ) {
             self.page = page
             self.limit = limit
             self.size = size
+            self.total = total
         }
     }
 }

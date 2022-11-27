@@ -17,21 +17,22 @@ public final class HomeViewModel: ObservableObject {
 
     func fetch() {
         state.dataState = .loading
-        environment
-            .service
-            .fetchMatchs(
-                state.pagination.page,
-                state.pagination.size
-            )
+        let page = state.pagination.page
+        let size = state.pagination.size
+        let runningMatchs = environment.service.fetchRunningMatchs()
+        let upcomingMatchs = environment.service.fetchUpcomingMatchs(page, size)
+
+        Publishers.Zip(runningMatchs, upcomingMatchs)
             .receive(on: DispatchQueue.main)
             .sink(
                 receiveCompletion: { [self] response in
-                    if case .failure = response {
-                        state.dataState = .error
-                    }
+                    if case .failure = response { state.dataState = .error }
                 },
-                receiveValue: { [self] data in
-                    state.dataState = .loaded(data)
+                receiveValue: { [self] (running, upcoming) in
+                    var matchs = running
+                    matchs.append(contentsOf: upcoming)
+                    state.pagination.total = matchs.count
+                    state.dataState = .loaded(matchs)
                 }
             )
             .store(in: &cancellables)
@@ -40,25 +41,27 @@ public final class HomeViewModel: ObservableObject {
     func loadMore(_ offset: Int) {
         guard state.isLoadingMore == false else { return }
         guard state.pagination.limit == false else { return }
-        guard offset == state.pagination.total else { return }
+        guard offset == (state.pagination.total - 1) else { return }
+
         state.isLoadingMore = true
         state.pagination.page += 1
+        let page = state.pagination.page
+        let size = state.pagination.size
 
-        environment
-            .service
-            .fetchMatchs(
-                state.pagination.page,
-                state.pagination.size
-            )
+        environment.service.fetchUpcomingMatchs(page, size)
             .receive(on: DispatchQueue.main)
             .sink(
-                receiveCompletion: { [self] _ in
-                    state.isLoadingMore = false
-                },
-                receiveValue: { [self] data in
-                    if var current = state.dataState.model {
-                        current.append(contentsOf: data)
-                        state.dataState = .loaded(current)
+                receiveCompletion: { [self] _ in state.isLoadingMore = false },
+                receiveValue: { [self] upcoming in
+                    guard upcoming.isEmpty == false else {
+                        state.pagination.limit = true
+                        return
+                    }
+
+                    if var matchs = state.dataState.model {
+                        matchs.append(contentsOf: upcoming)
+                        state.pagination.total += upcoming.count
+                        state.dataState = .loaded(matchs)
                     }
                 }
             )

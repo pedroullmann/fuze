@@ -5,14 +5,26 @@ import Feature_Home_Repository
 
 public extension HomeService {
     static let live: Self = .init(
-        fetchMatchs: { page, size in
+        fetchRunningMatchs: {
             let dispatcher = HTTPRequestDispatcher()
-            let endpoint: HomeHTTPEndpoint = .fetchMatchs(page: page, size: size)
+            let endpoint: HomeHTTPEndpoint = .fetchRunningMatchs
             let publisher: AnyPublisher<[MatchResponse], HTTPRequestError> = dispatcher
                 .dataPublisher(for: endpoint)
 
             return publisher
                 .map { $0.compactMap(MatchModel.init) }
+                .map { $0.filter { $0.opponents.count > 1 }}
+                .eraseToAnyPublisher()
+        },
+        fetchUpcomingMatchs: { page, size in
+            let dispatcher = HTTPRequestDispatcher()
+            let endpoint: HomeHTTPEndpoint = .fetchUpcomingMatchs(page: page, size: size)
+            let publisher: AnyPublisher<[MatchResponse], HTTPRequestError> = dispatcher
+                .dataPublisher(for: endpoint)
+
+            return publisher
+                .map { $0.compactMap(MatchModel.init) }
+                .map { $0.filter { $0.opponents.count > 1 }}
                 .eraseToAnyPublisher()
         }
     )
@@ -22,7 +34,7 @@ private extension MatchModel {
     init(_ response: MatchResponse) {
         self = .init(
             id: response.id,
-            beginAt: response.beginAt,
+            scheduledAt: response.scheduledAt,
             opponents: response.opponents.map {
                 MatchModel.Opponent.init($0.opponent)
             },
@@ -59,6 +71,8 @@ public extension MatchModel.Status {
             self = .running
         case .canceled:
             self = .canceled
+        case .postponed:
+            self = .postponed
         }
     }
 }

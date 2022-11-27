@@ -2,7 +2,7 @@ import Foundation
 
 public struct MatchResponse: Decodable {
     public let id: Int
-    public let beginAt: String?
+    public let scheduledAt: String?
     public let opponents: [OpponentObject]
     public let league: League
     public let serie: Serie
@@ -10,7 +10,7 @@ public struct MatchResponse: Decodable {
 
     public enum CodingKeys: String, CodingKey {
         case id
-        case beginAt = "begin_at"
+        case scheduledAt = "scheduled_at"
         case opponents
         case league
         case serie
@@ -57,5 +57,6 @@ public struct MatchResponse: Decodable {
         case notStarted = "not_started"
         case running
         case canceled
+        case postponed
     }
 }

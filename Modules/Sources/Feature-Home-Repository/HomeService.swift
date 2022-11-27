@@ -2,32 +2,38 @@ import Combine
 import Core_Networking_Interface
 
 public struct HomeService {
-    public let fetchMatchs: (
-        _ page: Int,
-        _ size: Int
-    ) -> AnyPublisher<[MatchModel], HTTPRequestError>
+    public let fetchRunningMatchs: () -> AnyPublisher<[MatchModel], HTTPRequestError>
+    public let fetchUpcomingMatchs: (_ page: Int, _ size: Int) -> AnyPublisher<[MatchModel], HTTPRequestError>
 
     public init(
-        fetchMatchs: @escaping (
-            _ page: Int,
-            _ size: Int
-        ) -> AnyPublisher<[MatchModel], HTTPRequestError>
+        fetchRunningMatchs: @escaping () -> AnyPublisher<[MatchModel], HTTPRequestError>,
+        fetchUpcomingMatchs: @escaping (_ page: Int, _ size: Int) -> AnyPublisher<[MatchModel], HTTPRequestError>
     ) {
-        self.fetchMatchs = fetchMatchs
+        self.fetchRunningMatchs = fetchRunningMatchs
+        self.fetchUpcomingMatchs = fetchUpcomingMatchs
     }
 }
 
 #if DEBUG
 public extension HomeService {
     static let failing: Self = .fixture(
-        fetchMatchs: { _, _ in
+        fetchRunningMatchs: {
+            Fail(error: HTTPRequestError.networking)
+                .eraseToAnyPublisher()
+        },
+        fetchUpcomingMatchs: { _, _ in
             Fail(error: HTTPRequestError.networking)
                 .eraseToAnyPublisher()
         }
     )
 
     static let successful: Self = .fixture(
-        fetchMatchs: { _, _ in
+        fetchRunningMatchs: {
+            Just(MatchModel.elements(1))
+                .setFailureType(to: HTTPRequestError.self)
+                .eraseToAnyPublisher()
+        },
+        fetchUpcomingMatchs: { _, _ in
             Just(MatchModel.elements(5))
                 .setFailureType(to: HTTPRequestError.self)
                 .eraseToAnyPublisher()
@@ -35,12 +41,13 @@ public extension HomeService {
     )
 
     static func fixture(
-        fetchMatchs: @escaping (
-            _ page: Int,
-            _ size: Int
-        ) -> AnyPublisher<[MatchModel], HTTPRequestError>
+        fetchRunningMatchs: @escaping () -> AnyPublisher<[MatchModel], HTTPRequestError>,
+        fetchUpcomingMatchs: @escaping (_ page: Int, _ size: Int) -> AnyPublisher<[MatchModel], HTTPRequestError>
     ) -> Self {
-        .init(fetchMatchs: fetchMatchs)
+        .init(
+            fetchRunningMatchs: fetchRunningMatchs,
+            fetchUpcomingMatchs: fetchUpcomingMatchs
+        )
     }
 }
 #endif

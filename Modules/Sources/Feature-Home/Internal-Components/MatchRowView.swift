@@ -66,7 +66,7 @@ struct MatchRowView: View {
             )
             .foregroundColor(.backgroundSecondary)
 
-            match.beginAt.map(statusView)
+            match.scheduledAt.map(statusView)
         }
     }
 
@@ -113,7 +113,7 @@ struct MatchRowView_Previews: PreviewProvider {
     static var previewMatchNow: some View {
         MatchRowView(
             match: .fixture(
-                beginAt: "2022-11-25T18:00:00Z",
+                scheduledAt: "2022-11-25T18:00:00Z",
                 opponents: MatchModel.Opponent.elements,
                 status: .running
             )
@@ -123,7 +123,7 @@ struct MatchRowView_Previews: PreviewProvider {
     static var previewMatchThisWeek: some View {
         MatchRowView(
             match: .fixture(
-                beginAt: "2022-11-26T18:00:00Z",
+                scheduledAt: "2022-11-26T18:00:00Z",
                 opponents: MatchModel.Opponent.elements,
                 status: .notStarted
             )
@@ -133,7 +133,7 @@ struct MatchRowView_Previews: PreviewProvider {
     static var previewMatchNextWeek: some View {
         MatchRowView(
             match: .fixture(
-                beginAt: "2022-11-31T18:00:00Z",
+                scheduledAt: "2022-11-31T18:00:00Z",
                 opponents: MatchModel.Opponent.elements,
                 status: .notStarted
             )

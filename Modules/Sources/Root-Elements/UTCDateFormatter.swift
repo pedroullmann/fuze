@@ -50,9 +50,10 @@ public struct UTCDateFormatter: UTCDateFormatterProtocol {
 
         guard isToday(date) == false else { return "Hoje, \(time)"}
 
-        let day = String(format:"%02d", calendar.component(.day, from: date))
+        let day = calendar.component(.day, from: date)
         let month = calendar.component(.month, from: date)
-        let fallback = "\(day).\(month) \(time)"
+        let dayMonth = String(format:"%02d.%02d", day, month)
+        let fallback = "\(dayMonth) \(time)"
         let today = currentDate()
 
         guard isDateInThisWeek(today, date) else { return fallback }

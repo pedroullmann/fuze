@@ -2,7 +2,7 @@ import Foundation
 
 public struct MatchModel: Equatable, Identifiable {
     public var id: Int?
-    public let beginAt: String?
+    public let scheduledAt: String?
     public let opponents: [Opponent]
     public let league: League
     public let serie: String
@@ -10,14 +10,14 @@ public struct MatchModel: Equatable, Identifiable {
 
     public init(
         id: Int?,
-        beginAt: String?,
+        scheduledAt: String?,
         opponents: [Opponent],
         league: League,
         serie: String,
         status: Status
     ) {
         self.id = id
-        self.beginAt = beginAt
+        self.scheduledAt = scheduledAt
         self.opponents = opponents
         self.league = league
         self.serie = serie
@@ -59,6 +59,7 @@ public struct MatchModel: Equatable, Identifiable {
         case notStarted = "not_started"
         case running
         case canceled
+        case postponed
 
         public var isRunning: Bool {
             self == .running
@@ -74,7 +75,7 @@ public extension MatchModel {
 
     static func fixture(
         id: Int = 1,
-        beginAt: String = "Date",
+        scheduledAt: String = "Date",
         opponents: [Opponent] = [],
         league: League = .init(name: "League", imageUrl: "Mock"),
         serie: String = "Serie",
@@ -82,7 +83,7 @@ public extension MatchModel {
     ) -> Self {
         .init(
             id: id,
-            beginAt: beginAt,
+            scheduledAt: scheduledAt,
             opponents: opponents,
             league: league,
             serie: serie,
