@@ -2,7 +2,7 @@ import Combine
 import Core_Networking_Interface
 
 public struct HomeService {
-    private let fetchMatchs: (
+    public let fetchMatchs: (
         _ page: Int,
         _ size: Int
     ) -> AnyPublisher<[MatchModel], HTTPRequestError>

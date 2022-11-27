@@ -4,9 +4,14 @@ import SwiftUI
 public extension FlexibleProgressView {
     struct Style {
         let size: ControlSize
+        let tintColor: DS.DynamicColor
 
-        public init(size: ControlSize = .large) {
+        public init(
+            size: ControlSize = .large,
+            tintColor: DS.DynamicColor = .textPrimary
+        ) {
             self.size = size
+            self.tintColor = tintColor
         }
     }
 }
@@ -20,7 +25,7 @@ public struct FlexibleProgressView: View {
 
     public var body: some View {
         ProgressView()
-            .progressViewStyle(CircularProgressViewStyle(tint: Color(.textPrimary)))
+            .progressViewStyle(CircularProgressViewStyle(tint: Color(style.tintColor)))
             .controlSize(style.size)
     }
 }

@@ -1,9 +1,9 @@
 import Foundation
 
 public struct MatchResponse: Decodable {
-    public let id: String
+    public let id: Int
     public let beginAt: String?
-    public let opponents: [Opponent]
+    public let opponents: [OpponentObject]
     public let league: League
     public let serie: Serie
     public let status: Status
@@ -17,15 +17,19 @@ public struct MatchResponse: Decodable {
         case status
     }
 
-    public struct Opponent: Decodable {
-        public let id: String
-        public let imageUrl: String?
-        public let name: String
+    public struct OpponentObject: Decodable {
+        public let opponent: Opponent
 
-        public enum CodingKeys: String, CodingKey {
-            case id
-            case imageUrl = "image_url"
-            case name
+        public struct Opponent: Decodable {
+            public let id: Int
+            public let imageUrl: String?
+            public let name: String
+
+            public enum CodingKeys: String, CodingKey {
+                case id
+                case imageUrl = "image_url"
+                case name
+            }
         }
     }
 
@@ -52,5 +56,6 @@ public struct MatchResponse: Decodable {
         case notPlayed = "not_played"
         case notStarted = "not_started"
         case running
+        case canceled
     }
 }

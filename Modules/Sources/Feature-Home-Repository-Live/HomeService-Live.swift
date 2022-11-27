@@ -23,7 +23,9 @@ private extension MatchModel {
         self = .init(
             id: response.id,
             beginAt: response.beginAt,
-            opponents: response.opponents.map(MatchModel.Opponent.init),
+            opponents: response.opponents.map {
+                MatchModel.Opponent.init($0.opponent)
+            },
             league: .init(
                 name: response.league.name,
                 imageUrl: response.league.imageUrl
@@ -35,7 +37,7 @@ private extension MatchModel {
 }
 
 public extension MatchModel.Opponent {
-    init(_ response: MatchResponse.Opponent) {
+    init(_ response: MatchResponse.OpponentObject.Opponent) {
         self = .init(
             id: response.id,
             imageUrl: response.imageUrl,
@@ -55,6 +57,8 @@ public extension MatchModel.Status {
             self = .notStarted
         case .running:
             self = .running
+        case .canceled:
+            self = .canceled
         }
     }
 }
