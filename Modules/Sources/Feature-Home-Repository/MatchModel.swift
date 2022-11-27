@@ -1,7 +1,7 @@
 import Foundation
 
 public struct MatchModel: Equatable, Identifiable {
-    public var id: String
+    public var id: Int?
     public let beginAt: String?
     public let opponents: [Opponent]
     public let league: League
@@ -9,7 +9,7 @@ public struct MatchModel: Equatable, Identifiable {
     public let status: Status
 
     public init(
-        id: String,
+        id: Int?,
         beginAt: String?,
         opponents: [Opponent],
         league: League,
@@ -25,12 +25,12 @@ public struct MatchModel: Equatable, Identifiable {
     }
 
     public struct Opponent: Equatable, Identifiable {
-        public var id: String
+        public var id: Int
         public let imageUrl: String?
         public let name: String
 
         public init(
-            id: String,
+            id: Int,
             imageUrl: String?,
             name: String
         ) {
@@ -58,6 +58,7 @@ public struct MatchModel: Equatable, Identifiable {
         case notPlayed = "not_played"
         case notStarted = "not_started"
         case running
+        case canceled
 
         public var isRunning: Bool {
             self == .running
@@ -68,11 +69,11 @@ public struct MatchModel: Equatable, Identifiable {
 #if DEBUG
 public extension MatchModel {
     static func elements(_ quantity: Int) -> [Self] {
-        (0...quantity).map { .fixture(id: "\($0)", opponents: Opponent.elements) }
+        (0...quantity).map { .fixture(id: $0, opponents: Opponent.elements) }
     }
 
     static func fixture(
-        id: String = "ID",
+        id: Int = 1,
         beginAt: String = "Date",
         opponents: [Opponent] = [],
         league: League = .init(name: "League", imageUrl: "Mock"),
@@ -92,12 +93,12 @@ public extension MatchModel {
 
 public extension MatchModel.Opponent {
     static let elements: [Self] = [
-        .fixture(id: "1", name: "Opponent 1"),
-        .fixture(id: "2", name: "Opponent 2")
+        .fixture(id: 1, name: "Opponent 1"),
+        .fixture(id: 2, name: "Opponent 2")
     ]
 
     static func fixture(
-        id: String = "ID",
+        id: Int = 1,
         imageUrl: String = "Mock",
         name: String = "Opponent"
     ) -> Self {

@@ -46,6 +46,7 @@ struct MatchRowView: View {
     private var bottomView: some View {
         HStack(spacing: .zero) {
             ImageView(urlString: match.league.imageUrl ?? "", size: .small)
+                .clipShape(Circle())
                 .padding(.leading, DS.Spacing.s)
 
             Text("\(match.league.name) | \(match.serie)")
@@ -93,6 +94,8 @@ struct MatchRowView: View {
 
             Text(opponent.name)
                 .textToken(.init(.paragraph3, .textPrimary))
+                .frame(maxWidth:  60)
+                .multilineTextAlignment(.center)
         }
     }
 }

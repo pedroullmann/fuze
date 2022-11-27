@@ -29,7 +29,6 @@ public struct HomeView: View {
             loadMore: viewModel.loadMore,
             isLoadingMore: viewModel.state.isLoadingMore
         )
-        .refreshable(action: { viewModel.refresh() })
         .padding(.horizontal, DS.Spacing.m)
     }
 

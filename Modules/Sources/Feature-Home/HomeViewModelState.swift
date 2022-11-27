@@ -25,7 +25,7 @@ public extension HomeViewModelState {
         public let size: Int
 
         public var total: Int {
-            page * size
+            (page * size) - 1
         }
 
         public init(

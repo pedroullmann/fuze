@@ -9,7 +9,7 @@ extension HomeHTTPEndpoint: HTTPRequestProtocol {
     public var path: String {
         switch self {
         case .fetchMatchs:
-            return "/matches"
+            return "/csgo/matches"
         }
     }
 
@@ -18,8 +18,8 @@ extension HomeHTTPEndpoint: HTTPRequestProtocol {
         case let .fetchMatchs(page, size):
             return .urlQuery(
                 [
-                    "page": "\(page)",
-                    "per_page": "\(size)"
+                    "page[number]": "\(page)",
+                    "page[size]": "\(size)"
                 ]
             )
         }

@@ -24,6 +24,14 @@ public struct ImageView: View {
             placeholder: {
                 Circle()
                     .foregroundColor(.placeholder)
+                    .overlay(
+                        FlexibleProgressView(
+                            style: .init(
+                                size: .small,
+                                tintColor: .backgroundPrimary
+                            )
+                        )
+                    )
             }
         )
         .frame(

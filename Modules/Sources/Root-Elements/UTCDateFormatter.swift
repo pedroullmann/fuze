@@ -1,18 +1,10 @@
 import Foundation
 
-public extension Locale {
-    static let brazil: Self = .init(identifier: "pt_BR")
-}
-
-public extension TimeZone {
-    static let brazil: Self = .init(identifier: "America/Sao_Paulo")!
-}
-
 public extension Calendar {
-    static var brazil: Self {
+    static var current: Self {
         var calendar: Self = .init(identifier: .gregorian)
-        calendar.locale = .brazil
-        calendar.timeZone = .brazil
+        calendar.locale = .current
+        calendar.timeZone = .current
         return calendar
     }
 }
@@ -31,11 +23,11 @@ public struct UTCDateFormatter: UTCDateFormatterProtocol {
 
     public init(
         isToday: @escaping (_ date: Date) -> Bool = { date in
-            let calendar: Calendar = .brazil
+            let calendar: Calendar = .current
             return calendar.isDateInToday(date)
         },
         isDateInThisWeek: @escaping (_ current: Date, _ date: Date) -> Bool = { current, date in
-            let calendar: Calendar = .brazil
+            let calendar: Calendar = .current
             return calendar.isDate(current, equalTo: date,toGranularity: .weekOfYear)
         },
         currentDate: @escaping () -> Date = {
@@ -51,7 +43,7 @@ public struct UTCDateFormatter: UTCDateFormatterProtocol {
         let formatter = ISO8601DateFormatter()
         guard let date = formatter.date(from: date) else { return nil }
 
-        let calendar: Calendar = .brazil
+        let calendar: Calendar = .current
         let hours = calendar.component(.hour, from: date)
         let minutes = calendar.component(.minute, from: date)
         let time = String(format:"%02d:%02d", hours, minutes)
