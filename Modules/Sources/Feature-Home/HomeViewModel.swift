@@ -44,6 +44,7 @@ public final class HomeViewModel: ObservableObject {
         guard offset == (state.pagination.total - 1) else { return }
 
         state.isLoadingMore = true
+        state.pagination.page += 1
         let page = state.pagination.page
         let size = state.pagination.size
 
@@ -54,7 +55,6 @@ public final class HomeViewModel: ObservableObject {
                     state.isLoadingMore = false
                 },
                 receiveValue: { [self] upcoming in
-                    state.pagination.page += 1
                     guard upcoming.isEmpty == false else {
                         state.pagination.limit = true
                         return

@@ -110,14 +110,19 @@ final class HomeViewModelTests: XCTestCase {
         // Given
         let offset = 24
         let pagination: HomeViewModelState.Pagination = .init(page: 1, total: 25)
+        let initialDataState: DataState<[MatchModel]> = .loaded([.fixture(id: 1)])
         let sut = makeSut(
-            initialState: .init(pagination: pagination),
+            initialState: .init(
+                dataState: initialDataState,
+                pagination: pagination
+            ),
             environment: .fixture(service: .failing)
         )
         // When
         sut.loadMore(offset)
         // Then
-        XCTAssertEqual(sut.state.pagination.page, 1)
+        XCTAssertEqual(sut.state.pagination.page, 2)
+        XCTAssertEqual(sut.state.dataState.model?.count, 1)
     }
 
     func test_loadMore_whenIsPossibleFetchMoreMatchs_andServiceIsSuccessful_andResponseIsNotEmpty_shouldAddMatchs() {
