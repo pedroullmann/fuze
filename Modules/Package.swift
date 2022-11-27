@@ -18,6 +18,7 @@ let package = Package(
         .library(name: "Feature-Home", targets: ["Feature-Home"]),
         .library(name: "Feature-Home-Repository", targets: ["Feature-Home-Repository"]),
         .library(name: "Feature-Home-Repository-Live", targets: ["Feature-Home-Repository-Live"]),
+        .library(name: "Feature-MatchDetails", targets: ["Feature-MatchDetails"]),
 
         // MARK: - Root
         .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
@@ -125,6 +126,10 @@ let package = Package(
                 "Core-Networking",
                 "Core-Networking-Interface"
             ]
+        ),
+        .target(
+            name: "Feature-MatchDetails",
+            dependencies: []
         )
     ]
 )
