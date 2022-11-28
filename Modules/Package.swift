@@ -101,7 +101,8 @@ let package = Package(
                 "Core-UI",
                 "Root-Elements",
                 "Feature-Home-Repository",
-                .product(name: "CombineSchedulers", package: "combine-schedulers")
+                .product(name: "CombineSchedulers", package: "combine-schedulers"),
+                "Feature-MatchDetails"
             ]
         ),
         .testTarget(
@@ -129,7 +130,11 @@ let package = Package(
         ),
         .target(
             name: "Feature-MatchDetails",
-            dependencies: []
+            dependencies: [
+                "Feature-Home-Repository",
+                "Core-UI",
+                "Core-DesignSystem"
+            ]
         )
     ]
 )

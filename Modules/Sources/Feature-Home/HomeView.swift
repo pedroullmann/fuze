@@ -2,6 +2,7 @@ import Core_DesignSystem
 import Core_Resources
 import Core_UI
 import Feature_Home_Repository
+import Feature_MatchDetails
 import Root_Elements
 import SwiftUI
 
@@ -19,7 +20,7 @@ public struct HomeView: View {
             refreshData: viewModel.fetch
         )
         .localizedNavigationTitle(.matchListTitle)
-        .onAppear(perform: viewModel.fetch)
+        .onAppear(perform: viewModel.onAppear.send)
     }
 
     private func loadedView(_ elements: [MatchModel]) -> some View {
@@ -30,11 +31,18 @@ public struct HomeView: View {
             isLoadingMore: viewModel.state.isLoadingMore
         )
         .padding(.horizontal, DS.Spacing.m)
+        .overlay(
+            NavigationLink(
+                destination: viewModel.state.selectedMatch.map(MatchDetailsView.init),
+                isActive: viewModel.isNavigationActive,
+                label: EmptyView().hidden
+            )
+        )
     }
 
     private func rowView(_ element: MatchModel) -> some View {
         Button(
-            action: { /* Navigate */ },
+            action: { viewModel.navigateToDetail(element) },
             label: { MatchRowView(match: element) }
         )
     }

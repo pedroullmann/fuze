@@ -30,6 +30,7 @@ public struct LaunchScreenView: View {
                 }
             }
             .navigationViewStyle(.stack)
+            .accentColor(.textPrimary)
         }
     }
 }

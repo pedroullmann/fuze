@@ -7,6 +7,9 @@ public struct MatchModel: Equatable, Identifiable {
     public let league: League
     public let serie: String
     public let status: Status
+    public var title: String {
+        "\(league.name) | \(serie) "
+    }
 
     public init(
         id: Int,
