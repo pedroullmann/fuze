@@ -46,3 +46,13 @@
 ### Root
 - Root-Extensions: Extensões base para utilizar nas Features;
 - Root-Elements: Componentes base para utilizar nas Features;
+
+## Requesitos (o que foi entregue):
+- [x] Um link para o repositório do projeto contendo:
+- [x] Código funcional
+- [x] Um README com uma breve descrição do que foi feito, decisões tomadas e como executar o projeto
+- [x] Arquitetura MVVM
+- [x] Paginação
+- [x] Responsividade
+- [x] Testes unitários
+- [x] Reatividade (RxSwift/Combine)
