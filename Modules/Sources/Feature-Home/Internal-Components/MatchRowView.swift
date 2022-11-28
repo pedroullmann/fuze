@@ -6,11 +6,11 @@ import SwiftUI
 
 struct MatchRowView: View {
     private let match: MatchModel
-    private let formatter: UTCDateFormatter
+    private let formatter: UTCDateFormatterProtocol
 
     init(
         match: MatchModel,
-        formatter: UTCDateFormatter = .init()
+        formatter: UTCDateFormatterProtocol = UTCDateFormatter()
     ) {
         self.match = match
         self.formatter = formatter
@@ -22,7 +22,18 @@ struct MatchRowView: View {
 
             VStack(spacing: .zero) {
                 Spacer()
-                versusView
+                VersusView(
+                    model: .init(
+                        team: .init(
+                            image: match.opponents.first?.imageUrl,
+                            name: match.opponents.first?.name
+                        ),
+                        rival: .init(
+                            image: match.opponents.last?.imageUrl,
+                            name: match.opponents.last?.name
+                        )
+                    )
+                )
                 Spacer()
                 Divider().background(.dividerPrimary)
                 bottomView
@@ -30,17 +41,6 @@ struct MatchRowView: View {
         }
         .frame(height: DS.Components.matchCard.height)
         .frame(maxWidth: DS.Components.matchCard.width)
-    }
-
-    private var versusView: some View {
-        HStack(spacing: DS.Spacing.m) {
-            match.opponents.first.map(opponentView)
-
-            Text("vs")
-                .textToken(.init(.paragraph2, .textSecondary))
-
-            match.opponents.last.map(opponentView)
-        }
     }
 
     private var bottomView: some View {
@@ -86,17 +86,6 @@ struct MatchRowView: View {
             Color(match.status.isRunning ? .staticRed: .elementOverSecondary)
                 .cornerRadius(DS.BorderRadius.small, corners: [.topRight, .bottomLeft])
         )
-    }
-
-    private func opponentView(_ opponent: MatchModel.Opponent) -> some View {
-        VStack(spacing: DS.Spacing.xs) {
-            ImageView(urlString: opponent.imageUrl ?? "", size: .regular)
-
-            Text(opponent.name)
-                .textToken(.init(.paragraph3, .textPrimary))
-                .frame(maxWidth:  60)
-                .multilineTextAlignment(.center)
-        }
     }
 }
 

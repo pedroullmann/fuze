@@ -33,7 +33,9 @@ public struct HomeView: View {
         .padding(.horizontal, DS.Spacing.m)
         .overlay(
             NavigationLink(
-                destination: viewModel.state.selectedMatch.map(MatchDetailsView.init),
+                destination: viewModel.state.selectedMatch.map {
+                    MatchDetailsView(match: $0)
+                },
                 isActive: viewModel.isNavigationActive,
                 label: EmptyView().hidden
             )

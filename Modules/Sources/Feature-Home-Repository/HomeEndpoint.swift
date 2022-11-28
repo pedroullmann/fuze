@@ -19,12 +19,7 @@ extension HomeHTTPEndpoint: HTTPRequestProtocol {
     public var parameters: HTTPRequestParameters {
         switch self {
         case .fetchRunningMatchs:
-            return .urlQuery(
-                [
-                    "page[number]": "1",
-                    "page[size]": "50"
-                ]
-            )
+            return .requestPlain
         case let .fetchUpcomingMatchs(page, size):
             return .urlQuery(
                 [
