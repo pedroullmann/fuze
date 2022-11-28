@@ -22,7 +22,7 @@ public final class LaunchScreenViewModel: ObservableObject {
             .resourcesBuilder()
             .registerFonts(
                 fonts: Font.MontserratStyle.allCases,
-                failureHandler: { debugPrint($0) } // TODO: Logger?
+                failureHandler: { debugPrint($0) }
             )
     }
 
