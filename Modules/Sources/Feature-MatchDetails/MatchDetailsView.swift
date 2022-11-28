@@ -5,15 +5,18 @@ import Root_Elements
 import SwiftUI
 
 public struct MatchDetailsView: View {
+    @ObservedObject private var viewModel: MatchDetailsViewModel
     private let match: MatchModel
     private let formatter: UTCDateFormatterProtocol
 
     public init(
         match: MatchModel,
-        formatter: UTCDateFormatterProtocol = UTCDateFormatter()
+        formatter: UTCDateFormatterProtocol = UTCDateFormatter(),
+        viewModel: MatchDetailsViewModel
     ) {
         self.match = match
         self.formatter = formatter
+        self.viewModel = viewModel
     }
 
     public var body: some View {

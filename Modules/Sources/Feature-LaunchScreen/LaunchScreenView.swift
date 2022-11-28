@@ -24,7 +24,10 @@ public struct LaunchScreenView: View {
                 FullScreenColor(.backgroundPrimary) {
                     HomeView(
                         viewModel: .init(
-                            environment: .init(service: viewModel.environment.homeService)
+                            environment: .init(
+                                service: viewModel.environment.homeService,
+                                matchDetailsService: viewModel.environment.matchDetailsService
+                            )
                         )
                     )
                 }

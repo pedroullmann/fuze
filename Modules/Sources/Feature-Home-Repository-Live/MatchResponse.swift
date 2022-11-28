@@ -44,7 +44,11 @@ public struct MatchResponse: Decodable {
     }
 
     public struct Serie: Decodable {
-        public let name: String
+        public let fullName: String
+
+        public enum CodingKeys: String, CodingKey {
+            case fullName = "full_name"
+        }
     }
 
     public enum Status: String, Decodable {

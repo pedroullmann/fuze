@@ -5,7 +5,7 @@ import SwiftUI
 
 public final class HomeViewModel: ObservableObject, LoadableOnFirstAppearance {
     @Published private(set) var state: HomeViewModelState
-    private let environment: HomeViewModelEnvironment
+    let environment: HomeViewModelEnvironment
     public let onAppear: PassthroughSubject<Void, Never> = .init()
     public var cancellables: Set<AnyCancellable> = []
 

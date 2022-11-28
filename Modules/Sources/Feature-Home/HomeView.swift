@@ -34,7 +34,15 @@ public struct HomeView: View {
         .overlay(
             NavigationLink(
                 destination: viewModel.state.selectedMatch.map {
-                    MatchDetailsView(match: $0)
+                    MatchDetailsView(
+                        match: $0,
+                        viewModel: .init(
+                            environment: .init(
+                                service: viewModel.environment.matchDetailsService,
+                                scheduler: viewModel.environment.scheduler
+                            )
+                        )
+                    )
                 },
                 isActive: viewModel.isNavigationActive,
                 label: EmptyView().hidden

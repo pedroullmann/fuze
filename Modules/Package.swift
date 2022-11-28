@@ -19,6 +19,8 @@ let package = Package(
         .library(name: "Feature-Home-Repository", targets: ["Feature-Home-Repository"]),
         .library(name: "Feature-Home-Repository-Live", targets: ["Feature-Home-Repository-Live"]),
         .library(name: "Feature-MatchDetails", targets: ["Feature-MatchDetails"]),
+        .library(name: "Feature-MatchDetails-Repository", targets: ["Feature-MatchDetails-Repository"]),
+        .library(name: "Feature-MatchDetails-Repository-Live", targets: ["Feature-MatchDetails-Repository-Live"]),
 
         // MARK: - Root
         .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
@@ -68,7 +70,8 @@ let package = Package(
                 "Core-UI",
                 "Root-Elements",
                 "Feature-Home",
-                "Feature-Home-Repository"
+                "Feature-Home-Repository",
+                "Feature-MatchDetails-Repository"
             ]
         ),
         .testTarget(
@@ -102,7 +105,8 @@ let package = Package(
                 "Root-Elements",
                 "Feature-Home-Repository",
                 .product(name: "CombineSchedulers", package: "combine-schedulers"),
-                "Feature-MatchDetails"
+                "Feature-MatchDetails",
+                "Feature-MatchDetails-Repository"
             ]
         ),
         .testTarget(
@@ -133,8 +137,24 @@ let package = Package(
             dependencies: [
                 "Feature-Home-Repository",
                 "Core-UI",
-                "Core-DesignSystem"
+                "Core-DesignSystem",
+                .product(name: "CombineSchedulers", package: "combine-schedulers"),
+                "Feature-MatchDetails-Repository"
             ]
-        )
+        ),
+        .target(
+            name: "Feature-MatchDetails-Repository",
+            dependencies: [
+                "Core-Networking-Interface"
+            ]
+        ),
+        .target(
+            name: "Feature-MatchDetails-Repository-Live",
+            dependencies: [
+                "Feature-MatchDetails-Repository",
+                "Core-Networking",
+                "Core-Networking-Interface"
+            ]
+        ),
     ]
 )
