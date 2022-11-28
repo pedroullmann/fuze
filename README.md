@@ -15,7 +15,7 @@
 - Abrir o arquivo Workspace.xcworkspace;
 - Esperar o SPM indexar e baixar as dependencias;
 
-## Observações (utilizei o projeto para aprender algumas coisas e relembrar de outras)
+## Observações (utilizei o projeto praticar algumas coisas)
 - Foi adicionado estrutura para Localização;
 - Foi adicionado cadastro de fontes customizadas;
 - Foi adicionado estrutura para design system;
