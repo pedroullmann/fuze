@@ -49,7 +49,7 @@ struct MatchRowView: View {
                 .clipShape(Circle())
                 .padding(.leading, DS.Spacing.s)
 
-            Text("\(match.league.name) | \(match.serie)")
+            Text(match.title)
                 .textToken(.init(.paragraph4, .textPrimary))
                 .padding(.leading, DS.Spacing.xxs)
 

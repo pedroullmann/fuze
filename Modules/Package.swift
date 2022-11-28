@@ -18,6 +18,7 @@ let package = Package(
         .library(name: "Feature-Home", targets: ["Feature-Home"]),
         .library(name: "Feature-Home-Repository", targets: ["Feature-Home-Repository"]),
         .library(name: "Feature-Home-Repository-Live", targets: ["Feature-Home-Repository-Live"]),
+        .library(name: "Feature-MatchDetails", targets: ["Feature-MatchDetails"]),
 
         // MARK: - Root
         .library(name: "Root-Extensions", targets: ["Root-Extensions"]),
@@ -100,7 +101,8 @@ let package = Package(
                 "Core-UI",
                 "Root-Elements",
                 "Feature-Home-Repository",
-                .product(name: "CombineSchedulers", package: "combine-schedulers")
+                .product(name: "CombineSchedulers", package: "combine-schedulers"),
+                "Feature-MatchDetails"
             ]
         ),
         .testTarget(
@@ -124,6 +126,14 @@ let package = Package(
                 "Feature-Home-Repository",
                 "Core-Networking",
                 "Core-Networking-Interface"
+            ]
+        ),
+        .target(
+            name: "Feature-MatchDetails",
+            dependencies: [
+                "Feature-Home-Repository",
+                "Core-UI",
+                "Core-DesignSystem"
             ]
         )
     ]

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E71A479E29342A75003C8528 /* Feature-MatchDetails in Frameworks */ = {isa = PBXBuildFile; productRef = E71A479D29342A75003C8528 /* Feature-MatchDetails */; };
 		E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */ = {isa = PBXBuildFile; productRef = E720AB5E292DB88500D578AE /* Core-Resources */; };
 		E72B970E292DC7AD00EB3869 /* Feature-LaunchScreen in Frameworks */ = {isa = PBXBuildFile; productRef = E72B970D292DC7AD00EB3869 /* Feature-LaunchScreen */; };
 		E730B804292E5A9800ED8EE0 /* Root-Extensions in Frameworks */ = {isa = PBXBuildFile; productRef = E730B803292E5A9800ED8EE0 /* Root-Extensions */; };
@@ -46,6 +47,7 @@
 				E7D5585E2931B979001D24D1 /* Feature-Home-Repository in Frameworks */,
 				E7512259292DB06600515525 /* Core-DesignSystem in Frameworks */,
 				E720AB5F292DB88500D578AE /* Core-Resources in Frameworks */,
+				E71A479E29342A75003C8528 /* Feature-MatchDetails in Frameworks */,
 				E7D5585A2931B711001D24D1 /* Core-Networking in Frameworks */,
 				E730B804292E5A9800ED8EE0 /* Root-Extensions in Frameworks */,
 				E72B970E292DC7AD00EB3869 /* Feature-LaunchScreen in Frameworks */,
@@ -127,6 +129,7 @@
 				E7D5585B2931B711001D24D1 /* Core-Networking-Interface */,
 				E7D5585D2931B979001D24D1 /* Feature-Home-Repository */,
 				E7D5585F2931B979001D24D1 /* Feature-Home-Repository-Live */,
+				E71A479D29342A75003C8528 /* Feature-MatchDetails */,
 			);
 			productName = Fuze;
 			productReference = E7512246292DA99E00515525 /* Fuze.app */;
@@ -399,6 +402,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E71A479D29342A75003C8528 /* Feature-MatchDetails */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = "Feature-MatchDetails";
+		};
 		E720AB5E292DB88500D578AE /* Core-Resources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = "Core-Resources";

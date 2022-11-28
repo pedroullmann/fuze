@@ -6,15 +6,18 @@ public struct HomeViewModelState: Equatable {
     var dataState: DataState<[MatchModel]>
     var pagination: Pagination
     var isLoadingMore: Bool
+    var selectedMatch: MatchModel?
 
     public init(
         dataState: DataState<[MatchModel]> = .loading,
         pagination: Pagination = .init(),
-        isLoadingMore: Bool = false
+        isLoadingMore: Bool = false,
+        selectedMatch: MatchModel? = nil
     ) {
         self.dataState = dataState
         self.pagination = pagination
         self.isLoadingMore = isLoadingMore
+        self.selectedMatch = selectedMatch
     }
 }
 

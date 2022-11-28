@@ -1,11 +1,13 @@
 import Combine
 import Feature_Home_Repository
+import Root_Elements
 import SwiftUI
 
-public final class HomeViewModel: ObservableObject {
+public final class HomeViewModel: ObservableObject, LoadableOnFirstAppearance {
     @Published private(set) var state: HomeViewModelState
     private let environment: HomeViewModelEnvironment
-    private var cancellables: Set<AnyCancellable> = []
+    public let onAppear: PassthroughSubject<Void, Never> = .init()
+    public var cancellables: Set<AnyCancellable> = []
 
     public init(
         initialState: HomeViewModelState = .init(),
@@ -13,9 +15,10 @@ public final class HomeViewModel: ObservableObject {
     ) {
         self.state = initialState
         self.environment = environment
+        loadingOnFirstAppearance()
     }
 
-    func fetch() {
+    public func fetch() {
         state.dataState = .loading
         let page = state.pagination.page
         let size = state.pagination.size
@@ -68,5 +71,22 @@ public final class HomeViewModel: ObservableObject {
                 }
             )
             .store(in: &cancellables)
+    }
+
+    func navigateToDetail(_ match: MatchModel) {
+        state.selectedMatch = match
+    }
+}
+
+public extension HomeViewModel {
+    var isNavigationActive: Binding<Bool> {
+        .init(
+            get: { [self] in state.selectedMatch != nil },
+            set: { [self] isActive in
+                if isActive == false  {
+                    state.selectedMatch = nil
+                }
+            }
+        )
     }
 }
