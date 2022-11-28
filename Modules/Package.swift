@@ -143,6 +143,16 @@ let package = Package(
                 "Root-Elements"
             ]
         ),
+        .testTarget(
+            name: "Feature-MatchDetails-Tests",
+            dependencies: [
+                "Feature-MatchDetails",
+                "Feature-MatchDetails-Repository",
+                "Root-Elements",
+                "Core-Networking-Interface",
+                "Feature-Home-Repository"
+            ]
+        ),
         .target(
             name: "Feature-MatchDetails-Repository",
             dependencies: [
