@@ -61,7 +61,7 @@ struct MatchRowView: View {
     private var backgroundView: some View {
         ZStack(alignment: .topTrailing) {
             RoundedRectangle(
-                cornerRadius: DS.BorderRadius.small,
+                cornerRadius: DS.BorderRadius.medium,
                 style: .continuous
             )
             .foregroundColor(.backgroundSecondary)
@@ -84,7 +84,7 @@ struct MatchRowView: View {
         .padding(DS.Spacing.xxs)
         .background(
             Color(match.status.isRunning ? .staticRed: .elementOverSecondary)
-                .cornerRadius(DS.BorderRadius.small, corners: [.topRight, .bottomLeft])
+                .cornerRadius(DS.BorderRadius.medium, corners: [.topRight, .bottomLeft])
         )
     }
 }

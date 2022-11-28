@@ -11,7 +11,7 @@ public struct PrimaryButtonStyle: ButtonStyle {
             )
             .background(
                 RoundedRectangle(
-                    cornerRadius: DS.BorderRadius.small,
+                    cornerRadius: DS.BorderRadius.medium,
                     style: .continuous
                 )
                 .foregroundColor(.staticRed)

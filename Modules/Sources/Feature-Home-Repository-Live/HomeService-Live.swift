@@ -42,7 +42,7 @@ private extension MatchModel {
                 name: response.league.name,
                 imageUrl: response.league.imageUrl
             ),
-            serie: response.serie.fullName,
+            serie: response.serie.name,
             status: MatchModel.Status.init(response.status)
         )
     }

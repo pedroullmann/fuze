@@ -44,12 +44,52 @@ public struct MatchDetailsView: View {
 //                    modelView: { _ in Text("Loaded") },
 //                    refreshData: {}
 //                )
-//                .padding(.top, DS.Spacing.xm)
+                .padding(.top, DS.Spacing.xm)
 
                 Spacer()
             }
             .navigationTitle(match.title)
             .navigationBarTitleDisplayMode(.inline)
         }
+    }
+
+    private func playersRow(leading: Bool) -> some View {
+        VStack(spacing: .zero) {
+            Rectangle()
+                .foregroundColor(.backgroundSecondary)
+                .cornerRadius(
+                    DS.BorderRadius.small,
+                    corners: leading ? [.topRight, .bottomRight]: [.topLeft, .bottomLeft]
+                )
+                .frame(height: 54)
+                .overlay (
+                    HStack(spacing: .zero) {
+                        if leading { Spacer() }
+                        if leading { playerNameView(leading: leading) }
+
+                        RoundedRectangle(cornerRadius: DS.BorderRadius.xSmall)
+                            .foregroundColor(.placeholder)
+                            .frame(width: DS.Components.playerImage.width)
+                            .frame(height: DS.Components.playerImage.height)
+                            .padding(leading ? .trailing: .leading, DS.Spacing.xxs)
+                            .offset(y: -DS.Spacing.xxs)
+
+                        if !leading { playerNameView(leading: leading) }
+                        if !leading { Spacer() }
+                    }
+                )
+        }
+        .edgesIgnoringSafeArea(.leading)
+    }
+
+    private func playerNameView(leading: Bool) -> some View {
+        VStack(alignment: leading ? .trailing: .leading, spacing: .zero) {
+            Text("Nickname")
+                .textToken(.init(.paragraph1Bold, .textPrimary))
+
+            Text("Nome Jogador")
+                .textToken(.init(.paragraph2, .textSecondary))
+        }
+        .padding(leading ? .trailing: .leading, DS.Spacing.xs)
     }
 }
