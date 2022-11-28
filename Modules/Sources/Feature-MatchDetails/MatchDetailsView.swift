@@ -1,6 +1,7 @@
 import Core_DesignSystem
 import Core_UI
 import Feature_Home_Repository
+import Feature_MatchDetails_Repository
 import Root_Elements
 import SwiftUI
 
@@ -42,11 +43,11 @@ public struct MatchDetailsView: View {
                 }
                 .padding(.top, DS.Spacing.m)
 
-//                FullScreenLoadingTemplate(
-//                    dataState: dataState,
-//                    modelView: { _ in Text("Loaded") },
-//                    refreshData: {}
-//                )
+                FullScreenLoadingTemplate(
+                    dataState: viewModel.state.dataState,
+                    modelView: playersView,
+                    refreshData: { viewModel.fetch(match) }
+                )
                 .padding(.top, DS.Spacing.xm)
 
                 Spacer()
@@ -54,45 +55,98 @@ public struct MatchDetailsView: View {
             .navigationTitle(match.title)
             .navigationBarTitleDisplayMode(.inline)
         }
+        .onAppear { viewModel.fetch(match) }
     }
 
-    private func playersRow(leading: Bool) -> some View {
-        VStack(spacing: .zero) {
-            Rectangle()
-                .foregroundColor(.backgroundSecondary)
-                .cornerRadius(
-                    DS.BorderRadius.small,
-                    corners: leading ? [.topRight, .bottomRight]: [.topLeft, .bottomLeft]
-                )
-                .frame(height: 54)
-                .overlay (
-                    HStack(spacing: .zero) {
-                        if leading { Spacer() }
-                        if leading { playerNameView(leading: leading) }
-
-                        RoundedRectangle(cornerRadius: DS.BorderRadius.xSmall)
-                            .foregroundColor(.placeholder)
-                            .frame(width: DS.Components.playerImage.width)
-                            .frame(height: DS.Components.playerImage.height)
-                            .padding(leading ? .trailing: .leading, DS.Spacing.xxs)
-                            .offset(y: -DS.Spacing.xxs)
-
-                        if !leading { playerNameView(leading: leading) }
-                        if !leading { Spacer() }
+    private func playersView(_ players: MatchDetailsState.Players) -> some View {
+        ScrollView(showsIndicators: false) {
+            HStack(alignment: .top,spacing: DS.Spacing.xxs) {
+                VStack(spacing: DS.Spacing.s) {
+                    ForEach(players.team) { player in
+                        leadingRow(player)
                     }
-                )
+                }
+
+                VStack(spacing: DS.Spacing.s) {
+                    ForEach(players.rival) { player in
+                        trailingRow(player)
+                    }
+                }
+            }
+            .edgesIgnoringSafeArea(.horizontal)
+            .offset(y: DS.Spacing.xxs)
         }
-        .edgesIgnoringSafeArea(.leading)
     }
 
-    private func playerNameView(leading: Bool) -> some View {
-        VStack(alignment: leading ? .trailing: .leading, spacing: .zero) {
-            Text("Nickname")
-                .textToken(.init(.paragraph1Bold, .textPrimary))
+    private func leadingRow(_ player: PlayerModel) -> some View {
+        Rectangle()
+            .foregroundColor(.backgroundSecondary)
+            .cornerRadius(DS.BorderRadius.small, corners: [.topRight, .bottomRight])
+            .frame(height: 54)
+            .overlay (
+                HStack(spacing: .zero) {
+                    Spacer()
 
-            Text("Nome Jogador")
-                .textToken(.init(.paragraph2, .textSecondary))
-        }
-        .padding(leading ? .trailing: .leading, DS.Spacing.xs)
+                    VStack(alignment: .trailing, spacing: .zero) {
+                        Text(player.nickname)
+                            .textToken(.init(.paragraph1Bold, .textPrimary))
+
+                        player.firstName.map {
+                            Text("\($0) \(player.lastName ?? "")")
+                                .textToken(.init(.paragraph2, .textSecondary))
+                                .multilineTextAlignment(.trailing)
+                        }
+                    }
+                    .padding(.trailing, DS.Spacing.xs)
+
+                    customAsyncImage(player.imageUrl)
+                        .padding(.trailing, DS.Spacing.xxs)
+                }
+            )
+    }
+
+    private func trailingRow(_ player: PlayerModel) -> some View {
+        Rectangle()
+            .foregroundColor(.backgroundSecondary)
+            .cornerRadius(DS.BorderRadius.small, corners: [.topLeft, .bottomLeft])
+            .frame(height: 54)
+            .overlay (
+                HStack(spacing: .zero) {
+                    customAsyncImage(player.imageUrl)
+                        .padding(.leading, DS.Spacing.xxs)
+
+                    VStack(alignment: .leading, spacing: .zero) {
+                        Text(player.nickname)
+                            .textToken(.init(.paragraph1Bold, .textPrimary))
+                            .multilineTextAlignment(.leading)
+
+                        player.firstName.map {
+                            Text("\($0) \(player.lastName ?? "")")
+                                .textToken(.init(.paragraph2, .textSecondary))
+                        }
+                    }
+                    .padding(.leading, DS.Spacing.xs)
+
+                    Spacer()
+                }
+            )
+    }
+
+    private func customAsyncImage(_ image: String?) -> some View {
+        AsyncImage(
+            url: .init(string: image ?? ""),
+            content: { image in
+                image
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            },
+            placeholder: {
+                RoundedRectangle(cornerRadius: DS.BorderRadius.xSmall)
+                    .foregroundColor(.placeholder)
+            }
+        )
+        .frame(width: DS.Components.playerImage.width)
+        .frame(height: DS.Components.playerImage.height)
+        .offset(y: -DS.Spacing.xxs)
     }
 }

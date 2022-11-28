@@ -139,7 +139,8 @@ let package = Package(
                 "Core-UI",
                 "Core-DesignSystem",
                 .product(name: "CombineSchedulers", package: "combine-schedulers"),
-                "Feature-MatchDetails-Repository"
+                "Feature-MatchDetails-Repository",
+                "Root-Elements"
             ]
         ),
         .target(
